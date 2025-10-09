@@ -11,7 +11,7 @@ const Venues = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [unavailableDates, setUnavailableDates] = useState([]);
   const [bookedDatesWithDetails, setBookedDatesWithDetails] = useState([]);
-  
+
   const [showCalendar, setShowCalendar] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -23,7 +23,7 @@ const Venues = () => {
   const [showStallSelector, setShowStallSelector] = useState(false);
   const [selectedStall, setSelectedStall] = useState(null);
   const [bookedStalls, setBookedStalls] = useState([]);
-  
+
   // Vendor stall configuration
   const stallBlocks = {
     A: { count: 16, name: 'Block A' },
@@ -33,7 +33,7 @@ const Venues = () => {
     E: { count: 12, name: 'Block E' },
     F: { count: 12, name: 'Block F' }
   };
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,9 +72,9 @@ const Venues = () => {
 
   const fetchUnavailableDates = async () => {
     if (!selectedVenueForBooking) return;
-    
+
     const venue = venues.find(v => v.id === selectedVenueForBooking);
-    
+
     // Skip calendar date blocking for vendor stalls - they don't use calendar availability
     if (selectedVenueForBooking === '3' || venue.name === 'Vendor Stalls') {
       console.log('Skipping calendar fetch for vendor stalls - they use stall-based availability');
@@ -82,25 +82,25 @@ const Venues = () => {
       setBookedDatesWithDetails([]);
       return;
     }
-    
+
     try {
       console.log('Fetching unavailable dates for venue:', venue.name);
-      
+
       // Fetch all bookings excluding vendor stalls (they don't block calendar dates)
       const allBookingsResponse = await fetch(`${API_BASE_URL}/api/bookings?excludeVendorStalls=true`);
-      
+
       let allUnavailableDates = [];
       let bookedDatesDetails = [];
-      
+
       // Get all confirmed bookings with details
       if (allBookingsResponse.ok) {
         const responseData = await allBookingsResponse.json();
         console.log('Fetched bookings response:', responseData);
-        
+
         // Handle both direct array and nested bookings structure
         const allBookingsData = responseData.bookings || responseData;
         console.log('Processing bookings array:', allBookingsData);
-        
+
         // Process all bookings to extract date and details - filter by current venue
         allBookingsData
           .filter(booking => {
@@ -159,13 +159,13 @@ const Venues = () => {
               }
             }
           });
-        
+
         // Remove duplicates from unavailable dates
         allUnavailableDates = [...new Set(allUnavailableDates)];
       } else {
         console.error('Failed to fetch bookings:', allBookingsResponse.status, allBookingsResponse.statusText);
       }
-      
+
       console.log('Unavailable dates set:', allUnavailableDates);
       console.log('Booked dates details:', bookedDatesDetails);
       console.log('Final unavailable dates count:', allUnavailableDates.length);
@@ -181,11 +181,11 @@ const Venues = () => {
 
   const fetchVendorStallAvailability = async (date) => {
     if (!date) return;
-    
+
     try {
       // For vendor stalls, get total availability (not date-specific)
       const response = await fetch(`${API_BASE_URL}/api/bookings/vendor-stalls/availability/${date}`);
-      
+
       if (response.ok) {
         const data = await response.json();
         setVendorStallAvailability({
@@ -228,7 +228,7 @@ const Venues = () => {
       <div className="stall-grid-container">
         <h4>Select Your Vendor Stall</h4>
         <p className="stall-instruction">Click on an available stall to select it. Red stalls are already booked.</p>
-        
+
         {Object.entries(stallBlocks).map(([blockLetter, blockInfo]) => (
           <div key={blockLetter} className="stall-block">
             <h5>{blockInfo.name} ({blockInfo.count} stalls)</h5>
@@ -238,7 +238,7 @@ const Venues = () => {
                 const stallId = `${blockLetter}${stallNumber}`;
                 const isBooked = bookedStalls.includes(stallId);
                 const isSelected = selectedStall?.stallId === stallId;
-                
+
                 return (
                   <div
                     key={stallId}
@@ -259,16 +259,16 @@ const Venues = () => {
 
   const checkDateAvailability = async (date, venue) => {
     if (!date || !venue) return true;
-    
+
     // Vendor stalls don't use date-based availability - they use stall-based availability
     if (venue === 'Vendor Stalls') {
       console.log('Skipping date availability check for vendor stalls');
       return true; // Always available for vendor stalls (stall availability is checked separately)
     }
-    
+
     try {
       const response = await fetch(`${API_BASE_URL}/api/bookings/availability/${encodeURIComponent(venue)}?startDate=${date}`);
-      
+
       if (response.ok) {
         const data = await response.json();
         return data.isAvailable;
@@ -331,13 +331,13 @@ const Venues = () => {
 
   const handleInputChange = async (e) => {
     const { name, value } = e.target;
-    
+
     // Update form data
     setFormData({
       ...formData,
       [name]: value
     });
-    
+
     // Check date availability if date field is changed
     if (name === 'date' && value && selectedVenueForBooking) {
       const venue = venues.find(v => v.id === selectedVenueForBooking);
@@ -403,24 +403,25 @@ const Venues = () => {
   const isDateAdminBlocked = (date) => {
     // Format date as YYYY-MM-DD without timezone issues
     const dateStr = formatYmdLocal(date);
-    
+
     // Check if this date has an admin block
-    const adminBlocked = bookedDatesWithDetails.some(booking => 
+    const adminBlocked = bookedDatesWithDetails.some(booking =>
       booking.date === dateStr && booking.isAdminBlock
     );
-    
+
     console.log(`Checking if ${dateStr} is admin blocked:`, adminBlocked);
     return adminBlocked;
   };
 
-  const getBookingDetailsForDate = (date) => {
-    // Format date as YYYY-MM-DD without timezone issues
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const dateStr = `${year}-${month}-${day}`;
-    return bookedDatesWithDetails.filter(booking => booking.date === dateStr);
-  };
+  // Function removed as it was unused - causing build failure in CI mode
+  // const getBookingDetailsForDate = (date) => {
+  //   // Format date as YYYY-MM-DD without timezone issues
+  //   const year = date.getFullYear();
+  //   const month = String(date.getMonth() + 1).padStart(2, '0');
+  //   const day = String(date.getDate()).padStart(2, '0');
+  //   const dateStr = `${year}-${month}-${day}`;
+  //   return bookedDatesWithDetails.filter(booking => booking.date === dateStr);
+  // };
 
   const isDatePast = (date) => {
     const today = new Date();
@@ -440,13 +441,13 @@ const Venues = () => {
       }
       return; // Don't allow selection of past, unavailable, or admin-blocked dates
     }
-    
+
     // Format date as YYYY-MM-DD without timezone issues (local)
     const dateStr = formatYmdLocal(date);
-    
+
     setFormData(prev => ({ ...prev, date: dateStr }));
     setShowCalendar(false);
-    
+
     // Check availability for vendor stalls
     if (selectedVenueForBooking === '3') {
       fetchVendorStallAvailability(dateStr);
@@ -479,14 +480,14 @@ const Venues = () => {
       'July', 'August', 'September', 'October', 'November', 'December'
     ];
     const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    
+
     const days = [];
-    
+
     // Add empty cells for days before the first day of the month
     for (let i = 0; i < firstDay; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
     }
-    
+
     // Add days of the month
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(currentYear, currentMonth, day);
@@ -496,29 +497,29 @@ const Venues = () => {
       // Format date consistently for comparison
       const dateStr = formatYmdLocal(date);
       const isSelected = formData.date === dateStr;
-      
+
       // Debug logging for specific dates
       if (day <= 5) {
         console.log(`Day ${day}: isUnavailable=${isUnavailable}, isAdminBlocked=${isAdminBlocked}, unavailableDates=`, unavailableDates, `dateStr=${dateStr}`);
       }
-      
+
       let className = 'calendar-day';
       if (isPast) className += ' past';
       if (isUnavailable) className += ' unavailable';
       if (isAdminBlocked) className += ' admin-blocked';
       if (isSelected) className += ' selected';
       if (!isPast && !isUnavailable && !isAdminBlocked) className += ' available';
-      
+
       // Remove tooltip content for venue page - keep calendar clean for customers
-      
+
       days.push(
         <div
           key={day}
           className={className}
           onClick={() => handleDateClick(date)}
           title={
-            isAdminBlocked ? 'Date not available' : 
-            isUnavailable ? 'Date not available' : ''
+            isAdminBlocked ? 'Date not available' :
+              isUnavailable ? 'Date not available' : ''
           }
         >
           {day}
@@ -535,7 +536,7 @@ const Venues = () => {
         </div>
       );
     }
-    
+
     return (
       <div className="calendar-container">
         <div className="calendar-header">
@@ -580,35 +581,35 @@ const Venues = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const venue = venues.find(v => v.id === selectedVenueForBooking);
-      
+
       if (!venue) {
         showToast('Please select a venue', { type: 'warning' });
         setIsSubmitting(false);
         return;
       }
-      
+
       // Validate required fields
       if (!formData.name || !formData.email || !formData.phone || !formData.date) {
         showToast('Please fill in all required fields (Name, Email, Phone, Date)', { type: 'warning' });
         setIsSubmitting(false);
         return;
       }
-      
+
       if (!isVendorStall && !formData.guests) {
         showToast('Please enter the expected number of guests', { type: 'warning' });
         setIsSubmitting(false);
         return;
       }
-      
+
       if (isVendorStall && !selectedStall) {
         showToast('Please select a vendor stall', { type: 'warning' });
         setIsSubmitting(false);
         return;
       }
-      
+
       // Map form data to API format
       const bookingData = {
         venue: venue.name,
@@ -622,8 +623,8 @@ const Venues = () => {
         },
         guests: parseInt(formData.guests) || 1,
         specialRequirements: formData.message || '',
-        notes: isVendorStall 
-          ? `Vendor Stall Rental - ${selectedStall.stallId} (${stallBlocks[selectedStall.block].name}) - Monthly basis starting from ${formData.date}` 
+        notes: isVendorStall
+          ? `Vendor Stall Rental - ${selectedStall.stallId} (${stallBlocks[selectedStall.block].name}) - Monthly basis starting from ${formData.date}`
           : `Event Type: ${formData.eventType || 'other'}, Duration: ${formData.duration || 'Not specified'}`,
         // Add stall information for vendor stalls
         ...(isVendorStall && selectedStall && {
@@ -650,15 +651,15 @@ const Venues = () => {
       });
 
       console.log('Response status:', response.status);
-      
+
       if (response.ok) {
         const savedBooking = await response.json();
         console.log('Booking saved:', savedBooking);
-        const message = isVendorStall 
+        const message = isVendorStall
           ? `Stall rental request submitted successfully! Booking ID: ${savedBooking._id}. We will contact you within 24 hours regarding your ${venue?.name} rental.`
           : `Booking request submitted successfully! Booking ID: ${savedBooking._id}. We will contact you within 24 hours regarding your ${venue?.name} booking.`;
         showToast(message, { type: 'success' });
-        
+
         // Reset form
         setFormData({
           name: '',
@@ -687,7 +688,7 @@ const Venues = () => {
 
   // Helper function to convert duration to days
   const getDurationInDays = (duration) => {
-    switch(duration) {
+    switch (duration) {
       case 'half-day': return 1;
       case 'full-day': return 1;
       case 'multi-day': return 3; // Default to 3 days, can be customized
@@ -767,14 +768,14 @@ const Venues = () => {
                           </div>
                           <p className="venue-price">{venue.price}</p>
                           <div className="venue-actions">
-                            <button 
+                            <button
                               className="btn btn-secondary"
                               onClick={() => handleLearnMore(venue)}
                             >
                               Learn More
                             </button>
                             {venue.bookable ? (
-                              <button 
+                              <button
                                 className="btn btn-primary"
                                 onClick={() => handleBookVenue(venue.id)}
                               >
@@ -803,241 +804,240 @@ const Venues = () => {
             <FadeInUp delay={0.2}>
               <div className="booking-container">
                 <form className="booking-form" onSubmit={handleSubmit}>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="venue">Select Venue *</label>
-                <select
-                  id="venue"
-                  name="venue"
-                  value={selectedVenueForBooking}
-                  onChange={handleVenueSelect}
-                  required
-                >
-                  <option value="">Choose a venue...</option>
-                  {venues
-                    .filter(venue => venue.bookable)
-                    .map((venue) => (
-                    <option key={venue.id} value={venue.id}>
-                      {venue.name} - {venue.price}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="date">{isVendorStall ? 'Start Date *' : 'Event Date *'}</label>
-                <div className="date-input-container">
-                  <input
-                    type="text"
-                    id="date"
-                    name="date"
-                    value={formData.date ? (() => {
-                      const [year, month, day] = formData.date.split('-');
-                      return new Date(year, month - 1, day).toLocaleDateString();
-                    })() : ''}
-                    onClick={() => setShowCalendar(!showCalendar)}
-                    placeholder="Click to select date"
-                    readOnly
-                    required
-                    disabled={!selectedVenueForBooking}
-                    className="calendar-input"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowCalendar(!showCalendar)}
-                    className="calendar-toggle"
-                    disabled={!selectedVenueForBooking}
-                  >
-                    📅
-                  </button>
-                </div>
-                {selectedVenueForBooking === '3' && formData.date && (
-                  <p className={`vendor-stall-availability ${
-                    vendorStallAvailability.availableStalls === 0 ? 'no-stalls' : 
-                    vendorStallAvailability.availableStalls <= 10 ? 'few-stalls' : 'available-stalls'
-                  }`}>
-                    <strong>Vendor Stalls Available for Rental:</strong> {vendorStallAvailability.availableStalls} out of {vendorStallAvailability.totalStalls}
-                    {vendorStallAvailability.availableStalls === 0 && (
-                      <span className="no-stalls-warning"> - All stalls are currently rented</span>
-                    )}
-                    {vendorStallAvailability.availableStalls > 0 && vendorStallAvailability.availableStalls <= 10 && (
-                      <span className="few-stalls-warning"> - Limited availability!</span>
-                    )}
-                    <br />
-                    <small>Note: Vendor stalls are long-term rentals, not daily bookings</small>
-                  </p>
-                )}
-                {isVendorStall && (
-                  <div className="form-group">
-                    <label htmlFor="stallSelector">Select Vendor Stall *</label>
-                    <div className="stall-selector-container">
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label htmlFor="venue">Select Venue *</label>
+                      <select
+                        id="venue"
+                        name="venue"
+                        value={selectedVenueForBooking}
+                        onChange={handleVenueSelect}
+                        required
+                      >
+                        <option value="">Choose a venue...</option>
+                        {venues
+                          .filter(venue => venue.bookable)
+                          .map((venue) => (
+                            <option key={venue.id} value={venue.id}>
+                              {venue.name} - {venue.price}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="date">{isVendorStall ? 'Start Date *' : 'Event Date *'}</label>
+                      <div className="date-input-container">
+                        <input
+                          type="text"
+                          id="date"
+                          name="date"
+                          value={formData.date ? (() => {
+                            const [year, month, day] = formData.date.split('-');
+                            return new Date(year, month - 1, day).toLocaleDateString();
+                          })() : ''}
+                          onClick={() => setShowCalendar(!showCalendar)}
+                          placeholder="Click to select date"
+                          readOnly
+                          required
+                          disabled={!selectedVenueForBooking}
+                          className="calendar-input"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowCalendar(!showCalendar)}
+                          className="calendar-toggle"
+                          disabled={!selectedVenueForBooking}
+                        >
+                          📅
+                        </button>
+                      </div>
+                      {selectedVenueForBooking === '3' && formData.date && (
+                        <p className={`vendor-stall-availability ${vendorStallAvailability.availableStalls === 0 ? 'no-stalls' :
+                            vendorStallAvailability.availableStalls <= 10 ? 'few-stalls' : 'available-stalls'
+                          }`}>
+                          <strong>Vendor Stalls Available for Rental:</strong> {vendorStallAvailability.availableStalls} out of {vendorStallAvailability.totalStalls}
+                          {vendorStallAvailability.availableStalls === 0 && (
+                            <span className="no-stalls-warning"> - All stalls are currently rented</span>
+                          )}
+                          {vendorStallAvailability.availableStalls > 0 && vendorStallAvailability.availableStalls <= 10 && (
+                            <span className="few-stalls-warning"> - Limited availability!</span>
+                          )}
+                          <br />
+                          <small>Note: Vendor stalls are long-term rentals, not daily bookings</small>
+                        </p>
+                      )}
+                      {isVendorStall && (
+                        <div className="form-group">
+                          <label htmlFor="stallSelector">Select Vendor Stall *</label>
+                          <div className="stall-selector-container">
+                            <input
+                              type="text"
+                              id="stallSelector"
+                              value={selectedStall ? `${selectedStall.stallId} (${stallBlocks[selectedStall.block].name})` : ''}
+                              placeholder="Click to select a stall"
+                              readOnly
+                              onClick={() => setShowStallSelector(true)}
+                              className="stall-selector-input"
+                              required
+                            />
+                            <button
+                              type="button"
+                              onClick={() => setShowStallSelector(true)}
+                              className="stall-selector-btn"
+                            >
+                              Choose Stall
+                            </button>
+                          </div>
+                          {selectedStall && (
+                            <p className="selected-stall-info">
+                              Selected: <strong>{selectedStall.stallId}</strong> in {stallBlocks[selectedStall.block].name}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label htmlFor="name">Full Name *</label>
                       <input
                         type="text"
-                        id="stallSelector"
-                        value={selectedStall ? `${selectedStall.stallId} (${stallBlocks[selectedStall.block].name})` : ''}
-                        placeholder="Click to select a stall"
-                        readOnly
-                        onClick={() => setShowStallSelector(true)}
-                        className="stall-selector-input"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         required
                       />
-                      <button
-                        type="button"
-                        onClick={() => setShowStallSelector(true)}
-                        className="stall-selector-btn"
-                      >
-                        Choose Stall
-                      </button>
                     </div>
-                    {selectedStall && (
-                      <p className="selected-stall-info">
-                        Selected: <strong>{selectedStall.stallId}</strong> in {stallBlocks[selectedStall.block].name}
-                      </p>
+                    <div className="form-group">
+                      <label htmlFor="email">Email Address *</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label htmlFor="phone">Phone Number *</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    {!isVendorStall && (
+                      <div className="form-group">
+                        <label htmlFor="guests">Expected Guests *</label>
+                        <input
+                          type="number"
+                          id="guests"
+                          name="guests"
+                          value={formData.guests}
+                          onChange={handleInputChange}
+                          required={!isVendorStall}
+                        />
+                      </div>
                     )}
                   </div>
-                )}
-              </div>
-            </div>
 
 
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="name">Full Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email Address *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-            </div>
+                  {!isVendorStall && (
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="eventType">Event Type</label>
+                        <select
+                          id="eventType"
+                          name="eventType"
+                          value={formData.eventType}
+                          onChange={handleInputChange}
+                        >
+                          <option value="">Select event type...</option>
+                          <option value="musical shows">Musical Shows</option>
+                          <option value="accoustic concerts">Accoustic Concerts</option>
+                          <option value="wedding">Wedding</option>
+                          <option value="corporate">Corporate Event</option>
+                          <option value="birthday">Birthday Party</option>
+                          <option value="anniversary">Anniversary</option>
+                          <option value="classes">Classes</option>
+                          <option value="political gatherings">Political Gatherings</option>
+                          <option value="exhibitions">Exhibitions</option>
+                          <option value="fairs">Fairs</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="duration">Event Duration</label>
+                        <select
+                          id="duration"
+                          name="duration"
+                          value={formData.duration}
+                          onChange={handleInputChange}
+                        >
+                          <option value="">Select duration...</option>
+                          <option value="half-day">Half Day (4 hours)</option>
+                          <option value="full-day">Full Day (8 hours)</option>
+                          <option value="multi-day">Multiple Days</option>
+                        </select>
+                      </div>
+                    </div>
+                  )}
 
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="phone">Phone Number *</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              {!isVendorStall && (
-                <div className="form-group">
-                  <label htmlFor="guests">Expected Guests *</label>
-                  <input
-                    type="number"
-                    id="guests"
-                    name="guests"
-                    value={formData.guests}
-                    onChange={handleInputChange}
-                    required={!isVendorStall}
-                  />
-                </div>
-              )}
-            </div>
+                  <div className="form-group">
+                    <label htmlFor="message">Additional Requirements</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder={isVendorStall
+                        ? "Please describe your business type, preferred stall location, and any special requirements..."
+                        : "Please describe any special requirements, catering needs, or additional services..."
+                      }
+                    ></textarea>
+                    {isVendorStall && (
+                      <>
+                        <p className="stall-note">
+                          <strong>Note:</strong> {isVendorStall && formData.date ?
+                            `${vendorStallAvailability.availableStalls} stalls are available for rental out of ${vendorStallAvailability.totalStalls} total stalls.` :
+                            `Select a date to see current availability. Total of ${vendorStallAvailability.totalStalls} stalls available for rental.`
+                          }
+                        </p>
+                        <p className="stall-note">
+                          <strong>Long-term Rental:</strong> Vendor stalls are rented on an ongoing basis (monthly billing). Once rented, the stall remains with the tenant until they choose to vacate.
+                        </p>
+                      </>
+                    )}
+                  </div>
 
-
-            {!isVendorStall && (
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="eventType">Event Type</label>
-                  <select
-                    id="eventType"
-                    name="eventType"
-                    value={formData.eventType}
-                    onChange={handleInputChange}
-                  >
-                    <option value="">Select event type...</option>
-                    <option value="musical shows">Musical Shows</option>
-                    <option value="accoustic concerts">Accoustic Concerts</option>
-                    <option value="wedding">Wedding</option>
-                    <option value="corporate">Corporate Event</option>
-                    <option value="birthday">Birthday Party</option>
-                    <option value="anniversary">Anniversary</option>
-                    <option value="classes">Classes</option>
-                    <option value="political gatherings">Political Gatherings</option>
-                    <option value="exhibitions">Exhibitions</option>
-                    <option value="fairs">Fairs</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="duration">Event Duration</label>
-                  <select
-                    id="duration"
-                    name="duration"
-                    value={formData.duration}
-                    onChange={handleInputChange}
-                  >
-                    <option value="">Select duration...</option>
-                    <option value="half-day">Half Day (4 hours)</option>
-                    <option value="full-day">Full Day (8 hours)</option>
-                    <option value="multi-day">Multiple Days</option>
-                  </select>
-                </div>
-              </div>
-            )}
-
-            <div className="form-group">
-              <label htmlFor="message">Additional Requirements</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder={isVendorStall 
-                  ? "Please describe your business type, preferred stall location, and any special requirements..."
-                  : "Please describe any special requirements, catering needs, or additional services..."
-                }
-              ></textarea>
-              {isVendorStall && (
-                <>
-                  <p className="stall-note">
-                    <strong>Note:</strong> {isVendorStall && formData.date ? 
-                      `${vendorStallAvailability.availableStalls} stalls are available for rental out of ${vendorStallAvailability.totalStalls} total stalls.` :
-                      `Select a date to see current availability. Total of ${vendorStallAvailability.totalStalls} stalls available for rental.`
+                  <button
+                    type="submit"
+                    className="btn btn-primary submit-btn"
+                    disabled={
+                      isSubmitting ||
+                      (isVendorStall && formData.date && vendorStallAvailability.availableStalls === 0)
                     }
-                  </p>
-                  <p className="stall-note">
-                    <strong>Long-term Rental:</strong> Vendor stalls are rented on an ongoing basis (monthly billing). Once rented, the stall remains with the tenant until they choose to vacate.
-                  </p>
-                </>
-              )}
-            </div>
-
-            <button 
-              type="submit" 
-              className="btn btn-primary submit-btn" 
-              disabled={
-                isSubmitting || 
-                (isVendorStall && formData.date && vendorStallAvailability.availableStalls === 0)
-              }
-            >
-              {isSubmitting 
-                ? (isVendorStall ? 'Submitting Rental Request...' : 'Submitting Booking Request...') 
-                : (isVendorStall && formData.date && vendorStallAvailability.availableStalls === 0)
-                  ? 'No Stalls Available'
-                  : (isVendorStall ? 'Submit Rental Request' : 'Submit Booking Request')
-              }
-            </button>
+                  >
+                    {isSubmitting
+                      ? (isVendorStall ? 'Submitting Rental Request...' : 'Submitting Booking Request...')
+                      : (isVendorStall && formData.date && vendorStallAvailability.availableStalls === 0)
+                        ? 'No Stalls Available'
+                        : (isVendorStall ? 'Submit Rental Request' : 'Submit Booking Request')
+                    }
+                  </button>
                 </form>
-                
+
                 {/* Calendar positioned next to the form */}
                 {/* calendar popup moved beneath date input */}
               </div>
@@ -1050,16 +1050,16 @@ const Venues = () => {
           <div className="calendar-modal-overlay" onClick={() => setShowCalendar(false)}>
             <ScaleIn>
               <div className="calendar-modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className="calendar-modal-header">
-              <h3>Select Date</h3>
-              <button
-                type="button"
-                onClick={() => setShowCalendar(false)}
-                className="calendar-modal-close"
-              >
-                ×
-              </button>
-            </div>
+                <div className="calendar-modal-header">
+                  <h3>Select Date</h3>
+                  <button
+                    type="button"
+                    onClick={() => setShowCalendar(false)}
+                    className="calendar-modal-close"
+                  >
+                    ×
+                  </button>
+                </div>
                 <div className="calendar-modal-body">
                   {renderCalendar()}
                 </div>
@@ -1073,16 +1073,16 @@ const Venues = () => {
           <div className="stall-modal-overlay" onClick={() => setShowStallSelector(false)}>
             <ScaleIn>
               <div className="stall-modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className="stall-modal-header">
-              <h3>Select Vendor Stall</h3>
-              <button
-                type="button"
-                onClick={() => setShowStallSelector(false)}
-                className="stall-modal-close"
-              >
-                ×
-              </button>
-            </div>
+                <div className="stall-modal-header">
+                  <h3>Select Vendor Stall</h3>
+                  <button
+                    type="button"
+                    onClick={() => setShowStallSelector(false)}
+                    className="stall-modal-close"
+                  >
+                    ×
+                  </button>
+                </div>
                 <div className="stall-modal-body">
                   {renderStallGrid()}
                 </div>
@@ -1096,31 +1096,31 @@ const Venues = () => {
           <div className="modal-overlay" onClick={closeModal}>
             <ScaleIn>
               <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>&times;</button>
-            <img src={selectedVenue.image} alt={selectedVenue.name} className="modal-image" />
-            <div className="modal-info">
-              <h3>{selectedVenue.name}</h3>
-              <p><strong>Capacity:</strong> {selectedVenue.capacity}</p>
-              <p><strong>Price:</strong> {selectedVenue.price}</p>
-              <p>{selectedVenue.description}</p>
-              <div className="features">
-                <h4>Features:</h4>
-                <ul>
-                  {selectedVenue.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-                <button 
-                  className="btn btn-primary"
-                  onClick={() => {
-                    closeModal();
-                    handleBookVenue(selectedVenue.id);
-                  }}
-                >
-                  Book This Venue
-                </button>
-              </div>
+                <button className="modal-close" onClick={closeModal}>&times;</button>
+                <img src={selectedVenue.image} alt={selectedVenue.name} className="modal-image" />
+                <div className="modal-info">
+                  <h3>{selectedVenue.name}</h3>
+                  <p><strong>Capacity:</strong> {selectedVenue.capacity}</p>
+                  <p><strong>Price:</strong> {selectedVenue.price}</p>
+                  <p>{selectedVenue.description}</p>
+                  <div className="features">
+                    <h4>Features:</h4>
+                    <ul>
+                      {selectedVenue.features.map((feature, index) => (
+                        <li key={index}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      closeModal();
+                      handleBookVenue(selectedVenue.id);
+                    }}
+                  >
+                    Book This Venue
+                  </button>
+                </div>
               </div>
             </ScaleIn>
           </div>

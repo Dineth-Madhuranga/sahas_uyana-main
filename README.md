@@ -59,6 +59,24 @@ A modern, responsive website for Sahas Uyana - a cultural and leisure venue in K
 - MongoDB (local or cloud)
 - npm or yarn
 
+## Railway Deployment
+
+### Frontend Deployment
+
+To deploy the frontend on Railway:
+
+1. Create a new project on Railway
+2. Connect your GitHub repository
+3. Set the following environment variables:
+   - `REACT_APP_API_URL` - Your backend API URL (e.g., https://your-backend-project.up.railway.app)
+4. Railway will automatically detect and build the project using the configuration files
+
+For detailed instructions, see [RAILWAY_FRONTEND_DEPLOYMENT.md](RAILWAY_FRONTEND_DEPLOYMENT.md)
+
+### Backend Deployment
+
+The backend is already deployed on Railway. Ensure your frontend points to the correct API URL.
+
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>

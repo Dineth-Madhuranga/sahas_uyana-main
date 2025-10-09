@@ -31,7 +31,10 @@
     "server": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "init-db": "node server/initDb.js",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/index.js",
+    "build:frontend": "sh ./scripts/build-frontend.sh",
+    "start:frontend": "sh ./scripts/start-frontend.sh",
+    "start:frontend:windows": "scripts\\start-frontend.bat"
   },
   "eslintConfig": {
     "extends": [
@@ -53,5 +56,8 @@
   },
   "devDependencies": {
     "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
   }
 }
