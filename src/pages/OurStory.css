@@ -1,0 +1,464 @@
+.our-story {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.story-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/j2qm2qZM/IMG-20250904-WA0037.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.story-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.story-subtitle {
+  font-size: 1.2rem;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Timeline Section */
+.timeline-section {
+  background: white;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e9ecef;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 100px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-icon {
+  width: 60px;
+  height: 60px;
+  background: #FFD700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #333;
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+  z-index: 1;
+}
+
+.timeline-content {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 20px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #f8f9fa;
+}
+
+.timeline-year {
+  font-size: 0.9rem;
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1976D2;
+  margin-bottom: 1rem;
+}
+
+.timeline-description {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Mission Section */
+.mission-section {
+  background: #f8f9fa;
+}
+
+.mission-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.mission-text .section-title {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.mission-item {
+  margin-bottom: 2rem;
+}
+
+.mission-item h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1976D2;
+  margin-bottom: 1rem;
+}
+
+.mission-item p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.mission-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mission-placeholder {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cultural" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23cultural)"/></svg>');
+  opacity: 0.3;
+}
+
+.mission-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  z-index: 1;
+  position: relative;
+}
+
+.mission-text-overlay {
+  font-size: 1.2rem;
+  font-weight: 600;
+  z-index: 1;
+  position: relative;
+}
+
+/* Values Section */
+.values-section {
+  background: white;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.value-card {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.value-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1976D2;
+  margin-bottom: 1rem;
+}
+
+.value-description {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Team Section */
+.team-section {
+  background: #f8f9fa;
+}
+
+.team-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.team-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.team-text p {
+  margin-bottom: 1.5rem;
+}
+
+.team-text p:last-child {
+  margin-bottom: 0;
+}
+
+.team-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-placeholder {
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="team" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="3" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23team)"/></svg>');
+  opacity: 0.3;
+}
+
+.team-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  z-index: 1;
+  position: relative;
+}
+
+.team-text-overlay {
+  font-size: 1.1rem;
+  font-weight: 600;
+  z-index: 1;
+  position: relative;
+}
+
+/* Future Section */
+.future-section {
+  background: white;
+}
+
+.future-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.future-item {
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.future-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.future-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.future-item h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1976D2;
+  margin-bottom: 1rem;
+}
+
+.future-item p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .our-story {
+    margin-top: 100px;
+  }
+
+  .story-title {
+    font-size: 2.5rem;
+  }
+
+  .story-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    padding-left: 80px;
+  }
+
+  .timeline-marker {
+    width: 60px;
+  }
+
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .timeline-content {
+    padding: 1.5rem;
+  }
+
+  .mission-content,
+  .team-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .mission-text .section-title {
+    text-align: center;
+  }
+
+  .mission-placeholder,
+  .team-placeholder {
+    width: 250px;
+    height: 250px;
+  }
+
+  .team-placeholder {
+    height: 180px;
+  }
+
+  .values-grid,
+  .future-plans {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-hero {
+    padding: 2rem 0;
+  }
+
+  .story-title {
+    font-size: 2rem;
+  }
+
+  .timeline-item {
+    padding-left: 60px;
+  }
+
+  .timeline-marker {
+    width: 50px;
+  }
+
+  .timeline-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+
+  .mission-placeholder,
+  .team-placeholder {
+    width: 200px;
+    height: 200px;
+  }
+
+  .team-placeholder {
+    height: 150px;
+  }
+}

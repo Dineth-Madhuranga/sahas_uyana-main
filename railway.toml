@@ -1,0 +1,15 @@
+[build]
+builder = "nixpacks"
+
+[build.buildCommand]
+"npm install"
+
+[deploy]
+startCommand = "cd server && npm start"
+
+[[services]]
+name = "api"
+rootDir = "server"
+buildCommand = "npm install"
+startCommand = "npm start"
+healthcheckPath = "/api/health"

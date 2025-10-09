@@ -1,0 +1,460 @@
+.helabojun {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.helabojun-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/bvW3TtSS/imgi-14-fb86662148be855d931b37d6c1e5fcbe.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.helabojun-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.helabojun-subtitle {
+  font-size: 1.2rem;
+  color: white;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Menu Section */
+.menu-section {
+  background: white;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.menu-card {
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+}
+
+.menu-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.menu-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 8px 8px 0 0;
+}
+
+.menu-card:hover .menu-item-image {
+  transform: scale(1.05);
+}
+
+.menu-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.menu-placeholder.kottu {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+}
+
+.menu-placeholder.hoppers {
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+}
+
+.menu-placeholder.rice-curry {
+  background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+}
+
+.menu-placeholder.watalappam {
+  background: linear-gradient(135deg, #8D6E63 0%, #5D4037 100%);
+}
+
+.menu-placeholder.string-hoppers {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+.menu-placeholder.pol-sambol {
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+}
+
+.menu-placeholder.dosa {
+  background: linear-gradient(135deg, #795548 0%, #5D4037 100%);
+}
+
+.menu-placeholder.milk-rice {
+  background: linear-gradient(135deg, #F5F5F5 0%, #E0E0E0 100%);
+  color: #333;
+}
+
+.menu-placeholder.pittu {
+  background: linear-gradient(135deg, #FFEB3B 0%, #FBC02D 100%);
+  color: #333;
+}
+
+.menu-placeholder.dhal-wade {
+  background: linear-gradient(135deg, #FF5722 0%, #D84315 100%);
+}
+
+.menu-placeholder.dodol {
+  background: linear-gradient(135deg, #3E2723 0%, #1B0000 100%);
+}
+
+.menu-placeholder.paratha {
+  background: linear-gradient(135deg, #FFC107 0%, #FF8F00 100%);
+  color: #333;
+}
+
+.menu-content {
+  padding: 1.5rem;
+}
+
+.menu-item-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1976D2;
+  margin-bottom: 0.5rem;
+}
+
+.menu-item-description {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.menu-item-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FFD700;
+}
+
+/* Ingredients Section */
+.ingredients-section {
+  background: #f8f9fa;
+}
+
+.ingredients-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.ingredients-text .section-title {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.ingredients-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.ingredient-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.feature-text h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1976D2;
+  margin-bottom: 0.5rem;
+}
+
+.feature-text p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.ingredients-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredients-placeholder {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ingredient-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 200px;
+  height: 200px;
+}
+
+.ingredient-item {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Visit Section */
+.visit-section {
+  background: white;
+}
+
+.visit-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.visit-text .section-title {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.visit-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.visit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: #E8F5E8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-text h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1976D2;
+  margin-bottom: 0.25rem;
+}
+
+.info-text p {
+  color: #666;
+  margin: 0;
+}
+
+.visit-map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="map" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="rgba(255,255,255,0.1)"/><path d="M0,10 L10,0 M10,10 L0,0" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23map)"/></svg>');
+  opacity: 0.5;
+}
+
+.map-content {
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+.map-marker {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.map-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2E7D32;
+  margin-bottom: 0.5rem;
+}
+
+.map-subtext {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Health Section */
+.health-section {
+  background: #f8f9fa;
+}
+
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.health-card {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid #e9ecef;
+}
+
+.health-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.health-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1976D2;
+  margin-bottom: 1rem;
+}
+
+.health-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .helabojun {
+    margin-top: 100px;
+  }
+
+  .helabojun-title {
+    font-size: 2.5rem;
+  }
+
+  .helabojun-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .ingredients-content,
+  .visit-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .ingredients-text .section-title,
+  .visit-text .section-title {
+    text-align: center;
+  }
+
+  .ingredient-features {
+    grid-template-columns: 1fr;
+  }
+
+  .ingredients-placeholder {
+    width: 250px;
+    height: 250px;
+  }
+
+  .ingredient-items {
+    width: 150px;
+    height: 150px;
+  }
+
+  .ingredient-item {
+    font-size: 1.5rem;
+  }
+
+  .map-placeholder {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .helabojun-hero {
+    padding: 2rem 0;
+  }
+
+  .helabojun-title {
+    font-size: 2rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+}
