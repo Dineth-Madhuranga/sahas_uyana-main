@@ -1,107 +1,37 @@
 .helabojun {
   min-height: 100vh;
-  padding-top: 120px;
 }
 
 /* Hero Section */
 .helabojun-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(25, 118, 210, 0.4)), url('https://i.postimg.cc/bvW3TtSS/imgi-14-fb86662148be855d931b37d6c1e5fcbe.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/bvW3TtSS/imgi-14-fb86662148be855d931b37d6c1e5fcbe.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 70vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
-  overflow: hidden;
-  animation: heroBackgroundZoom 20s infinite alternate;
-}
-
-@keyframes heroBackgroundZoom {
-  0% {
-    background-size: 100%;
-  }
-
-  100% {
-    background-size: 110%;
-  }
-}
-
-.helabojun-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-  opacity: 0.3;
-  animation: heroPulse 4s ease-in-out infinite;
-}
-
-@keyframes heroPulse {
-
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.5;
-    transform: scale(1.05);
-  }
 }
 
 .helabojun-title {
-  font-size: 4rem;
-  font-weight: 800;
-  color: #FFD700;
-  margin-bottom: 1.5rem;
-  text-shadow: 3px 3px 0px #000,
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000,
-    1px 1px 0px #000;
-  letter-spacing: 2px;
-  position: relative;
-  z-index: 2;
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-  0% {
-    text-shadow: 3px 3px 0px #000,
-      -1px -1px 0px #000,
-      1px -1px 0px #000,
-      -1px 1px 0px #000,
-      1px 1px 0px #000;
-  }
-
-  100% {
-    text-shadow: 3px 3px 0px #000,
-      -1px -1px 0px #000,
-      1px -1px 0px #000,
-      -1px 1px 0px #000,
-      1px 1px 0px #000,
-      0 0 20px #FFD700;
-  }
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .helabojun-subtitle {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: white;
   max-width: 1000px;
-  margin: 0 auto 2rem;
-  line-height: 1.7;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  position: relative;
-  z-index: 2;
-  padding: 0 1rem;
-  font-weight: 500;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 /* Menu Section */
@@ -464,27 +394,6 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .helabojun-title {
-    font-size: 3.5rem;
-  }
-
-  .helabojun-subtitle {
-    font-size: 1.3rem;
-    max-width: 90%;
-  }
-
-  .hero-content-wrapper {
-    max-width: 95%;
-    padding: 2rem;
-  }
-
-  .hero-btn {
-    padding: 1.1rem 2.2rem;
-    font-size: 1.1rem;
-  }
-}
-
 @media (max-width: 768px) {
   .helabojun {
     margin-top: 100px;
@@ -530,26 +439,11 @@
   .map-placeholder {
     height: 250px;
   }
-
-  .hero-content-wrapper {
-    padding: 1.5rem;
-    margin: 0 1rem;
-  }
-
-  .hero-btn {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-  }
-
-  .menu-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
 }
 
 @media (max-width: 480px) {
   .helabojun-hero {
     padding: 2rem 0;
-    height: 60vh;
   }
 
   .helabojun-title {
@@ -562,25 +456,5 @@
 
   .health-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero-content-wrapper {
-    padding: 1rem;
-    margin: 0 0.5rem;
-  }
-
-  .hero-btn {
-    padding: 0.9rem 1.8rem;
-    font-size: 1rem;
-    width: 100%;
-    max-width: 250px;
-  }
-
-  .helabojun-subtitle {
-    font-size: 1rem;
-  }
-
-  .menu-card {
-    margin: 0 10px;
   }
 }
