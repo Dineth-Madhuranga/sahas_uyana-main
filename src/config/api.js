@@ -1,7 +1,7 @@
 // API Configuration
 // This file centralizes all API endpoint configurations
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://sahasuyana-production.up.railway.app/';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://sahasuyana-main-production.up.railway.app';
 
 export const API_ENDPOINTS = {
   // Admin endpoints
@@ -10,25 +10,25 @@ export const API_ENDPOINTS = {
   ADMIN_CHANGE_PASSWORD: `${API_BASE_URL}/api/admin/change-password`,
   ADMIN_LIST: `${API_BASE_URL}/api/admin/admins`,
   ADMIN_CREATE_INITIAL: `${API_BASE_URL}/api/admin/create-initial-admin`,
-  
+
   // Booking endpoints
   BOOKINGS: `${API_BASE_URL}/api/bookings`,
   ADMIN_BLOCK: `${API_BASE_URL}/api/bookings/admin-block`,
   ADMIN_BLOCK_TEST: `${API_BASE_URL}/api/bookings/admin-block-test`,
-  
+
   // Vendor stalls endpoints
   VENDOR_STALLS_ADMIN: `${API_BASE_URL}/api/bookings/admin/vendor-stalls`,
   VENDOR_STALLS_TEST: `${API_BASE_URL}/api/bookings/vendor-stalls/test`,
   VENDOR_STALLS_BOOK: `${API_BASE_URL}/api/bookings/admin/vendor-stalls/book`,
   VENDOR_STALLS_BOOKED: `${API_BASE_URL}/api/bookings/vendor-stalls/booked`,
   VENDOR_STALLS_AVAILABILITY: `${API_BASE_URL}/api/bookings/vendor-stalls/availability`,
-  
+
   // News endpoints
   NEWS: `${API_BASE_URL}/api/news`,
-  
+
   // Contact endpoint
   CONTACT: `${API_BASE_URL}/api/contact`,
-  
+
   // Health check
   HEALTH: `${API_BASE_URL}/api/health`,
 };
