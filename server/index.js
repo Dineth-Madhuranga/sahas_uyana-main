@@ -24,13 +24,15 @@ const corsOptions = {
       'http://localhost:3001',
       process.env.FRONTEND_URL,
       'https://sahas-uyana.vercel.app',
-      'https://sahas-uyana-git-main-dilsha-weerasinghes-projects.vercel.app'
+      'https://sahas-uyana-git-main-dilsha-weerasinghes-projects.vercel.app',
+      'https://sahasuyana-main-production-05fe.up.railway.app'
     ].filter(Boolean); // Remove undefined values
     
-    // Also allow any Vercel preview deployments
+    // Also allow any Vercel preview deployments and Railway deployments
     const isVercelPreview = origin && origin.includes('sahas-uyana') && origin.includes('.vercel.app');
+    const isRailwayDeployment = origin && origin.includes('.railway.app');
     
-    if (allowedOrigins.indexOf(origin) !== -1 || isVercelPreview) {
+    if (allowedOrigins.indexOf(origin) !== -1 || isVercelPreview || isRailwayDeployment) {
       callback(null, true);
     } else {
       console.log('CORS blocked origin:', origin);
