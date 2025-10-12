@@ -1355,6 +1355,36 @@
 
 /* Calendar positioning - fallback for when it would go off-screen */
 @media (max-width: 1200px) {
+  .venues-hero {
+    height: 65vh;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .venues-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .booking-container {
+    flex-direction: column;
+  }
+
+  .calendar-sidebar {
+    width: 100%;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .calendar-popup {
     position: absolute;
     top: 100%;
@@ -1400,6 +1430,42 @@
 }
 
 @media (max-width: 768px) {
+  .venues {
+    padding-top: 100px;
+  }
+
+  .venues-hero {
+    height: 60vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .venues-grid {
+    padding: 3rem 0;
+  }
+
+  .venues-grid h2 {
+    font-size: 2rem;
+  }
+
+  .venue-image {
+    height: 200px;
+  }
+
+  .booking-section {
+    padding: 3rem 0;
+  }
+
+  .booking-form {
+    padding: 1.5rem;
+  }
+
   .calendar-popup {
     position: fixed;
     top: 50%;
@@ -1408,5 +1474,51 @@
     width: 90vw;
     max-width: 300px;
     margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .venues {
+    padding-top: 90px;
+  }
+
+  .venues-hero {
+    height: 50vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content {
+    padding: 1rem;
+  }
+
+  .venues-grid h2 {
+    font-size: 1.8rem;
+  }
+
+  .venue-image {
+    height: 180px;
+  }
+
+  .venue-info {
+    padding: 1rem;
+  }
+
+  .booking-form {
+    padding: 1rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 0.8rem;
+    font-size: 1rem;
   }
 }

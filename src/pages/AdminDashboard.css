@@ -25,8 +25,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .admin-header {
@@ -508,25 +513,25 @@
   .bookings-grid {
     display: block !important;
   }
-  
+
   .booking-card {
     display: block !important;
     width: 100% !important;
     margin-bottom: 1rem !important;
     padding: 1rem;
   }
-  
+
   .booking-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .booking-actions {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .booking-actions .btn {
     width: 100%;
     justify-content: center;
@@ -542,7 +547,7 @@
     flex-direction: column !important;
     width: 100% !important;
   }
-  
+
   .admin-dashboard .bookings-main-content .bookings-grid .booking-card {
     width: 100% !important;
     max-width: 100% !important;
@@ -555,23 +560,23 @@
   .bookings-grid {
     gap: 0.75rem;
   }
-  
+
   .booking-card {
     padding: 0.75rem;
     border-radius: 8px;
   }
-  
+
   .booking-header h3 {
     font-size: 1.1rem;
   }
-  
+
   .detail-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.25rem;
     padding: 0.75rem 0;
   }
-  
+
   .detail-value {
     text-align: left;
     font-weight: 600;
@@ -958,16 +963,16 @@
   .booking-calendar-tab {
     padding: 1rem;
   }
-  
+
   .calendar-stats {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .stat-card {
     padding: 1rem;
   }
-  
+
   .stat-number {
     font-size: 2rem;
   }
@@ -1257,18 +1262,6 @@
 @media (max-width: 1200px) {
   .news-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .news-card {
-    height: 400px;
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .news-grid {
-    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
   }
 
@@ -1318,11 +1311,11 @@
     transform: rotate(-45deg) translate(6px, -6px);
   }
 
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
   .top-navbar.mobile-menu-open {
     background: transparent;
@@ -1674,7 +1667,7 @@
   .admin-nav {
     padding: 0.75rem 1rem;
   }
-  
+
   .mobile-menu-toggle {
     left: 1rem;
     width: 25px;
@@ -1684,11 +1677,11 @@
   .hamburger-line {
     height: 2px;
   }
-  
+
   .admin-logo .logo-text {
     font-size: 1rem;
   }
-  
+
   .logout-btn {
     right: 1rem;
     padding: 0.3rem 0.6rem;
@@ -1908,17 +1901,17 @@
   margin: 0;
 }
 
-  /* Mobile Menu Overlay */
-  .mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 10001;
-    cursor: pointer;
-  }
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10001;
+  cursor: pointer;
+}
 
 .modal-content {
   background: white;
@@ -2357,25 +2350,25 @@
     text-align: center;
     gap: 1rem;
   }
-  
+
   .avatar-circle {
     width: 60px;
     height: 60px;
     font-size: 1.4rem;
   }
-  
+
   .profile-details .detail-row {
     grid-template-columns: 1fr;
     gap: 0.5rem;
     text-align: left;
   }
-  
+
   .section-header {
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
   }
-  
+
   .profile-form-grid {
     grid-template-columns: 1fr;
   }

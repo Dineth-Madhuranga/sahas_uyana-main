@@ -561,46 +561,4 @@
   .story-subtitle {
     font-size: 1rem;
   }
-
-  .hero-content-wrapper {
-    position: relative;
-    z-index: 3;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
-    max-width: 1200px;
-    margin: 0 auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .hero-cta {
-    margin-top: 2rem;
-  }
-
-  .hero-btn {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    background: #1976D2;
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    border: 2px solid #FFD700;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  .hero-btn:hover {
-    background: #FFD700;
-    color: #000;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  }
-
-  .hero-btn:active {
-    transform: translateY(-1px);
-  }
 }

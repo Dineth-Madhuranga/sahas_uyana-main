@@ -109,15 +109,30 @@ code {
   grid-template-columns: repeat(4, 1fr);
 }
 
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 18px;
+  }
+
+  .section-title {
+    font-size: 2.3rem;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 60px 0;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .container {
     padding: 0 15px;
   }
@@ -125,7 +140,7 @@ code {
   .grid-2 {
     grid-template-columns: 1fr;
   }
-  
+
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
