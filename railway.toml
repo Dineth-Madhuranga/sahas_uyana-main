@@ -5,14 +5,11 @@
 builder = "nixpacks"
 
 [deploy]
-# Install serve package and build the React app
-startCommand = "npm install serve && npm run build && npx serve -s build"
+startCommand = "npm install && npm run build && npx serve -s build"
 
 [env]
 NODE_ENV = "production"
 PORT = "3000"
-# IMPORTANT: Set REACT_APP_API_URL to your backend API URL in Railway environment variables
-# REACT_APP_API_URL = "https://your-backend-project.up.railway.app"
 
 [[services]]
 name = "sahas-uyana-frontend"
