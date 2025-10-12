@@ -18,7 +18,7 @@ const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
+
     const allowedOrigins = [
       'http://localhost:3000',
       'http://localhost:3001',
@@ -27,11 +27,11 @@ const corsOptions = {
       'https://sahas-uyana-git-main-dilsha-weerasinghes-projects.vercel.app',
       'https://sahasuyana-main-production-05fe.up.railway.app'
     ].filter(Boolean); // Remove undefined values
-    
+
     // Also allow any Vercel preview deployments and Railway deployments
     const isVercelPreview = origin && origin.includes('sahas-uyana') && origin.includes('.vercel.app');
     const isRailwayDeployment = origin && origin.includes('.railway.app');
-    
+
     if (allowedOrigins.indexOf(origin) !== -1 || isVercelPreview || isRailwayDeployment) {
       callback(null, true);
     } else {
@@ -106,9 +106,9 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/api/health', (req, res) => {
   const mongoose = require('mongoose');
   const dbStatus = mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected';
-  
-  res.json({ 
-    status: 'OK', 
+
+  res.json({
+    status: 'OK',
     message: 'Sahas Uyana API is running',
     database: dbStatus,
     timestamp: new Date().toISOString()
@@ -118,7 +118,7 @@ app.get('/api/health', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ 
+  res.status(500).json({
     message: 'Something went wrong!',
     error: process.env.NODE_ENV === 'production' ? {} : err.stack
   });

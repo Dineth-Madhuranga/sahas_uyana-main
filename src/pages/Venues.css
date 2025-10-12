@@ -4,26 +4,138 @@
 
 /* Hero Section */
 .venues-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-              url('https://i.postimg.cc/XJJTMB0J/Whats-App-Image-2025-09-04-at-10-30-02-5ac32ab6.jpg') center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(25, 118, 210, 0.4)),
+    url('https://i.postimg.cc/XJJTMB0J/Whats-App-Image-2025-09-04-at-10-30-02-5ac32ab6.jpg') center/cover;
   background-attachment: fixed;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
+  position: relative;
+  overflow: hidden;
+  animation: heroBackgroundZoom 20s infinite alternate;
+}
+
+@keyframes heroBackgroundZoom {
+  0% {
+    background-size: 100%;
+  }
+
+  100% {
+    background-size: 110%;
+  }
+}
+
+.venues-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  opacity: 0.3;
+  animation: heroPulse 4s ease-in-out infinite;
+}
+
+@keyframes heroPulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #FFD700;
+  text-shadow: 3px 3px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000,
+    1px 1px 0px #000;
+  letter-spacing: 2px;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 3px 3px 0px #000,
+      -1px -1px 0px #000,
+      1px -1px 0px #000,
+      -1px 1px 0px #000,
+      1px 1px 0px #000;
+  }
+
+  100% {
+    text-shadow: 3px 3px 0px #000,
+      -1px -1px 0px #000,
+      1px -1px 0px #000,
+      -1px 1px 0px #000,
+      1px 1px 0px #000,
+      0 0 20px #FFD700;
+  }
 }
 
 .hero-content p {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  padding: 0 1rem;
+  font-weight: 500;
+}
+
+.hero-cta {
+  margin-top: 1rem;
+}
+
+.hero-btn {
+  padding: 1.2rem 2.5rem;
   font-size: 1.2rem;
-  margin-bottom: 0;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: #1976D2;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid #FFD700;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-btn:hover {
+  background: #FFD700;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-btn:active {
+  transform: translateY(-1px);
 }
 
 /* Venues Grid */
@@ -174,9 +286,17 @@
 }
 
 /* Ensure wrapper components allow cards to stretch to equal heights */
-.venues-list > * { height: 100%; }
-.venues-list > * > * { height: 100%; }
-.venues-list > * > * > .venue-card { height: 100%; }
+.venues-list>* {
+  height: 100%;
+}
+
+.venues-list>*>* {
+  height: 100%;
+}
+
+.venues-list>*>*>.venue-card {
+  height: 100%;
+}
 
 .btn {
   padding: 0.8rem 1.5rem;
@@ -432,44 +552,44 @@
   .hero-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .venues-list {
     grid-template-columns: 1fr;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
   }
-  
+
   .venue-actions {
     flex-direction: column;
   }
-  
+
   .modal-overlay {
     padding: 1rem;
   }
-  
+
   .modal-info {
     padding: 1.5rem;
   }
-  
+
   /* Responsive booking container */
   .booking-container {
     flex-direction: column;
     gap: 1.5rem;
   }
-  
+
   .calendar-sidebar {
     position: static;
     min-width: auto;
     width: 100%;
   }
-  
+
   /* Responsive styles for modal calendar popup */
   .calendar-modal-content {
     max-width: 400px;
   }
-  
+
   .calendar-modal-overlay {
     padding: 0.75rem;
   }
@@ -479,16 +599,16 @@
   .hero-content h1 {
     font-size: 2rem;
   }
-  
+
   .venues-grid h2,
   .booking-section h2 {
     font-size: 2rem;
   }
-  
+
   .booking-form {
     padding: 1.5rem;
   }
-  
+
   /* Calendar responsive styles */
   .calendar-popup {
     position: fixed;
@@ -501,16 +621,16 @@
     overflow-y: auto;
     margin-left: 0;
   }
-  
+
   .calendar-day {
     min-height: 28px;
     font-size: 0.75rem;
   }
-  
+
   .calendar-header h3 {
     font-size: 0.9rem;
   }
-  
+
   .calendar-nav {
     width: 22px;
     height: 22px;
@@ -521,41 +641,41 @@
   .date-input-container {
     position: static;
   }
-  
+
   /* Mobile styles for modal calendar popup */
   .calendar-modal-content {
     max-width: 350px;
     margin: 0.5rem;
   }
-  
+
   .calendar-modal-header {
     padding: 1rem;
   }
-  
+
   .calendar-modal-body {
     padding: 1rem;
   }
-  
+
   /* Mobile styles for stall selector */
   .stall-selector-container {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .stall-selector-btn {
     width: 100%;
   }
-  
+
   .stall-modal-content {
     max-width: 95%;
     margin: 0.5rem;
   }
-  
+
   .stall-grid {
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     gap: 6px;
   }
-  
+
   .stall-box {
     min-height: 45px;
     font-size: 0.7rem;
@@ -647,6 +767,7 @@
   overflow-y: auto;
   z-index: 1000;
 }
+
 .booking-form {
   position: relative;
 }
@@ -688,6 +809,7 @@
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -762,6 +884,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -772,6 +895,7 @@
     opacity: 0;
     transform: scale(0.9) translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -1248,24 +1372,24 @@
     outline: 2px solid #333333;
     outline-offset: 2px;
   }
-  
+
   .date-input-container {
     position: relative;
     z-index: 1;
   }
-  
+
   .booking-form {
     position: relative;
     z-index: 1;
   }
-  
+
   .booking-container {
     flex-direction: column;
     gap: 1.5rem;
     position: relative;
     overflow: visible;
   }
-  
+
   .calendar-sidebar {
     position: static;
     min-width: auto;

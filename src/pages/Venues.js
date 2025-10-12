@@ -730,11 +730,18 @@ const Venues = () => {
             <FadeInUp delay={0.4}>
               <p>Discover the perfect space for your special event at Sahas Uyana</p>
             </FadeInUp>
+            <FadeInUp delay={0.6}>
+              <div className="hero-cta">
+                <a href="#venues-grid" className="btn btn-primary hero-btn">
+                  Explore Our Venues
+                </a>
+              </div>
+            </FadeInUp>
           </div>
         </section>
 
         {/* Venues Grid */}
-        <section className="venues-grid">
+        <section id="venues-grid" className="venues-grid">
           <div className="container">
             <FadeInUp>
               <h2>Choose Your Perfect Venue</h2>
@@ -853,7 +860,7 @@ const Venues = () => {
                       </div>
                       {selectedVenueForBooking === '3' && formData.date && (
                         <p className={`vendor-stall-availability ${vendorStallAvailability.availableStalls === 0 ? 'no-stalls' :
-                            vendorStallAvailability.availableStalls <= 10 ? 'few-stalls' : 'available-stalls'
+                          vendorStallAvailability.availableStalls <= 10 ? 'few-stalls' : 'available-stalls'
                           }`}>
                           <strong>Vendor Stalls Available for Rental:</strong> {vendorStallAvailability.availableStalls} out of {vendorStallAvailability.totalStalls}
                           {vendorStallAvailability.availableStalls === 0 && (
