@@ -5,7 +5,7 @@
 /* Hero Section */
 .venues-hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-              url('https://i.postimg.cc/XJJTMB0J/Whats-App-Image-2025-09-04-at-10-30-02-5ac32ab6.jpg') center/cover;
+    url('https://i.postimg.cc/XJJTMB0J/Whats-App-Image-2025-09-04-at-10-30-02-5ac32ab6.jpg') center/cover;
   background-attachment: fixed;
   height: 60vh;
   display: flex;
@@ -13,6 +13,7 @@
   justify-content: center;
   text-align: center;
   color: white;
+  padding-bottom: 2rem;
 }
 
 .hero-content h1 {
@@ -174,9 +175,17 @@
 }
 
 /* Ensure wrapper components allow cards to stretch to equal heights */
-.venues-list > * { height: 100%; }
-.venues-list > * > * { height: 100%; }
-.venues-list > * > * > .venue-card { height: 100%; }
+.venues-list>* {
+  height: 100%;
+}
+
+.venues-list>*>* {
+  height: 100%;
+}
+
+.venues-list>*>*>.venue-card {
+  height: 100%;
+}
 
 .btn {
   padding: 0.8rem 1.5rem;
@@ -432,44 +441,44 @@
   .hero-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .venues-list {
     grid-template-columns: 1fr;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
   }
-  
+
   .venue-actions {
     flex-direction: column;
   }
-  
+
   .modal-overlay {
     padding: 1rem;
   }
-  
+
   .modal-info {
     padding: 1.5rem;
   }
-  
+
   /* Responsive booking container */
   .booking-container {
     flex-direction: column;
     gap: 1.5rem;
   }
-  
+
   .calendar-sidebar {
     position: static;
     min-width: auto;
     width: 100%;
   }
-  
+
   /* Responsive styles for modal calendar popup */
   .calendar-modal-content {
     max-width: 400px;
   }
-  
+
   .calendar-modal-overlay {
     padding: 0.75rem;
   }
@@ -479,16 +488,16 @@
   .hero-content h1 {
     font-size: 2rem;
   }
-  
+
   .venues-grid h2,
   .booking-section h2 {
     font-size: 2rem;
   }
-  
+
   .booking-form {
     padding: 1.5rem;
   }
-  
+
   /* Calendar responsive styles */
   .calendar-popup {
     position: fixed;
@@ -501,16 +510,16 @@
     overflow-y: auto;
     margin-left: 0;
   }
-  
+
   .calendar-day {
     min-height: 28px;
     font-size: 0.75rem;
   }
-  
+
   .calendar-header h3 {
     font-size: 0.9rem;
   }
-  
+
   .calendar-nav {
     width: 22px;
     height: 22px;
@@ -521,41 +530,41 @@
   .date-input-container {
     position: static;
   }
-  
+
   /* Mobile styles for modal calendar popup */
   .calendar-modal-content {
     max-width: 350px;
     margin: 0.5rem;
   }
-  
+
   .calendar-modal-header {
     padding: 1rem;
   }
-  
+
   .calendar-modal-body {
     padding: 1rem;
   }
-  
+
   /* Mobile styles for stall selector */
   .stall-selector-container {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .stall-selector-btn {
     width: 100%;
   }
-  
+
   .stall-modal-content {
     max-width: 95%;
     margin: 0.5rem;
   }
-  
+
   .stall-grid {
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     gap: 6px;
   }
-  
+
   .stall-box {
     min-height: 45px;
     font-size: 0.7rem;
@@ -647,6 +656,7 @@
   overflow-y: auto;
   z-index: 1000;
 }
+
 .booking-form {
   position: relative;
 }
@@ -688,6 +698,7 @@
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -762,6 +773,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -772,6 +784,7 @@
     opacity: 0;
     transform: scale(0.9) translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -1248,24 +1261,24 @@
     outline: 2px solid #333333;
     outline-offset: 2px;
   }
-  
+
   .date-input-container {
     position: relative;
     z-index: 1;
   }
-  
+
   .booking-form {
     position: relative;
     z-index: 1;
   }
-  
+
   .booking-container {
     flex-direction: column;
     gap: 1.5rem;
     position: relative;
     overflow: visible;
   }
-  
+
   .calendar-sidebar {
     position: static;
     min-width: auto;
