@@ -1,5 +1,6 @@
 .news {
   min-height: 100vh;
+  margin-top: var(--header-total-height, 100px);
 }
 
 /* Hero Section */
@@ -314,7 +315,7 @@
 
 @media (max-width: 768px) {
   .news {
-    margin-top: 100px;
+    margin-top: var(--header-total-height, 100px);
   }
 
   .news-title {

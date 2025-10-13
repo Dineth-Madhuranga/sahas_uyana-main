@@ -1,7 +1,7 @@
 .directors-office {
   min-height: 100vh;
   /* Add margin-top to account for fixed header like in Venues page */
-  margin-top: 100px;
+  margin-top: var(--header-total-height, 100px);
 }
 
 /* Hero Section */
@@ -446,7 +446,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .directors-office {
-    margin-top: 100px;
+    margin-top: var(--header-total-height, 100px);
   }
 
   .directors-title {
