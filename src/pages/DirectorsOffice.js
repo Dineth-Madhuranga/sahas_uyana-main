@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './DirectorsOffice.css';
 import { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem, PageTransition } from '../components/ScrollAnimation';
 
@@ -18,6 +19,16 @@ const DirectorsOffice = () => {
                 Guiding Sahas Uyana with vision and dedication to preserve and promote Sri Lankan culture.
               </p>
             </FadeInUp>
+            <FadeInUp delay={0.6}>
+              <div className="directors-hero-actions">
+                <Link to="/contact" className="btn btn-primary directors-hero-btn">
+                  Contact Us
+                </Link>
+                <Link to="/our-story" className="btn btn-secondary directors-hero-btn">
+                  Our Story
+                </Link>
+              </div>
+            </FadeInUp>
           </div>
         </section>
 
@@ -28,8 +39,8 @@ const DirectorsOffice = () => {
               <FadeInLeft>
                 <div className="speech-image">
                   <div className="director-photo">
-                    <img 
-                      src="https://i.postimg.cc/XYfYHz3V/Mangala.png" 
+                    <img
+                      src="https://i.postimg.cc/XYfYHz3V/Mangala.png"
                       alt="Mr. Mangala Mallimaarachi - Managing Director"
                       className="director-image"
                     />
@@ -39,17 +50,17 @@ const DirectorsOffice = () => {
               <FadeInRight delay={0.2}>
                 <div className="speech-text">
                   <h2 className="speech-title">A Message from Our Managing Director</h2>
-              <div className="speech-quote">
-                <p>
-                  At Sahas Uyana, we believe in creating more than just an event space or theme park—we are dedicated to building an iconic destination that blends sophistication with joy. From the very beginning, our vision has been to offer a place where versatility, prestige come together to host memorable experiences for every guest.
-                </p>
-                <p>
-                  Our commitment is to provide a platform where families, friends, and communities can come together, whether it's for celebrations, cultural experiences, or simply a day of adventure. With carefully curated attractions, and authentic Sri Lankan cuisine, we aim to set new benchmarks in hospitality and entertainment.
-                </p>
-                <p>
-                  It is our privilege to welcome you to Sahas Uyana—a destination where every moment is designed to be unforgettable.
-                </p>
-              </div>
+                  <div className="speech-quote">
+                    <p>
+                      At Sahas Uyana, we believe in creating more than just an event space or theme park—we are dedicated to building an iconic destination that blends sophistication with joy. From the very beginning, our vision has been to offer a place where versatility, prestige come together to host memorable experiences for every guest.
+                    </p>
+                    <p>
+                      Our commitment is to provide a platform where families, friends, and communities can come together, whether it's for celebrations, cultural experiences, or simply a day of adventure. With carefully curated attractions, and authentic Sri Lankan cuisine, we aim to set new benchmarks in hospitality and entertainment.
+                    </p>
+                    <p>
+                      It is our privilege to welcome you to Sahas Uyana—a destination where every moment is designed to be unforgettable.
+                    </p>
+                  </div>
                   <div className="speech-signature">
                     <div className="signature-name">Mr. Mangala Mallimaarachi</div>
                     <div className="signature-title">Managing Director, Sahas Uyana</div>
@@ -67,8 +78,8 @@ const DirectorsOffice = () => {
               <FadeInRight>
                 <div className="speech-image">
                   <div className="director-photo">
-                    <img 
-                      src="https://i.postimg.cc/XYfYHz3V/Mangala.png" 
+                    <img
+                      src="https://i.postimg.cc/XYfYHz3V/Mangala.png"
                       alt="Chairperson - Sahas Uyana"
                       className="director-image"
                     />
@@ -78,17 +89,17 @@ const DirectorsOffice = () => {
               <FadeInLeft delay={0.2}>
                 <div className="speech-text">
                   <h2 className="speech-title">A Message from Our Chairperson</h2>
-              <div className="speech-quote">
-                <p>
-                  Sahas Uyana was built with one goal in mind: to bring people together in a space that celebrates life, culture, and togetherness. Nestled in the heart of Kandy, we are proud to offer not just thrilling rides and serene landscapes, but also a place where children laugh freely, families bond, and traditions are celebrated.
-                </p>
-                <p>
-                  We take pride in showcasing the richness of Sri Lankan heritage through our authentic food stalls, vibrant performances, and warm hospitality. Every event and every visit here is designed to leave our guests with lasting memories and genuine joy.
-                </p>
-                <p>
-                  As we continue to grow, our promise remains the same—to serve as a trusted destination where every visitor feels valued, connected, and inspired. Thank you for choosing Sahas Uyana to be part of your special moments.
-                </p>
-              </div>
+                  <div className="speech-quote">
+                    <p>
+                      Sahas Uyana was built with one goal in mind: to bring people together in a space that celebrates life, culture, and togetherness. Nestled in the heart of Kandy, we are proud to offer not just thrilling rides and serene landscapes, but also a place where children laugh freely, families bond, and traditions are celebrated.
+                    </p>
+                    <p>
+                      We take pride in showcasing the richness of Sri Lankan heritage through our authentic food stalls, vibrant performances, and warm hospitality. Every event and every visit here is designed to leave our guests with lasting memories and genuine joy.
+                    </p>
+                    <p>
+                      As we continue to grow, our promise remains the same—to serve as a trusted destination where every visitor feels valued, connected, and inspired. Thank you for choosing Sahas Uyana to be part of your special moments.
+                    </p>
+                  </div>
                   <div className="speech-signature">
                     <div className="signature-name">Ms. aaaaaaaaaaaa</div>
                     <div className="signature-title">Chairperson, Sahas Uyana</div>

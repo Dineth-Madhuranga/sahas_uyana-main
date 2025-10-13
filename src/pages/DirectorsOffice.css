@@ -2,6 +2,30 @@
   min-height: 100vh;
 }
 
+@keyframes backgroundFloat {
+
+  0%,
+  100% {
+    transform: scale(1) translateY(0px);
+  }
+
+  50% {
+    transform: scale(1.05) translateY(-10px);
+  }
+}
+
+@keyframes overlayPulse {
+
+  0%,
+  100% {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(25, 118, 210, 0.3));
+  }
+
+  50% {
+    background: linear-gradient(45deg, rgba(25, 118, 210, 0.3), rgba(0, 0, 0, 0.6));
+  }
+}
+
 /* Hero Section */
 .directors-hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/DwcGd2gb/IMG-20250904-WA0033.jpg');
@@ -9,29 +33,101 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 60vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
+  overflow: hidden;
+  animation: backgroundFloat 20s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.directors-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(25, 118, 210, 0.3));
+  z-index: 1;
+  animation: overlayPulse 15s ease-in-out infinite;
+}
+
+.directors-hero .container {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
 }
 
 .directors-title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #FFD700;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000,
+    1px 1px 0px #000;
+  font-family: '0KDROSE Regular', 'Impact', 'Arial Black', 'Helvetica', sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .directors-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: white;
   max-width: 1000px;
-  margin: 0 auto;
-  line-height: 1.6;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+}
+
+.directors-hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.directors-hero-btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #1976D2;
+  color: white;
+  border: 2px solid #1976D2;
+}
+
+.btn-primary:hover {
+  background: #1565C0;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(25, 118, 210, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Speech Section */
