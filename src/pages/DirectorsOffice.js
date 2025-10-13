@@ -1,37 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './DirectorsOffice.css';
 import { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem, PageTransition } from '../components/ScrollAnimation';
 
 const DirectorsOffice = () => {
-  // Adjust margin-top based on header height
-  useEffect(() => {
-    const adjustPageMargin = () => {
-      const header = document.querySelector('.header');
-      if (header) {
-        const headerHeight = header.offsetHeight;
-        const headerTop = parseInt(getComputedStyle(header).top) || 0;
-        const totalSpace = headerHeight + headerTop;
-        const pageElement = document.querySelector('.directors-office');
-        if (pageElement) {
-          pageElement.style.marginTop = `${totalSpace}px`;
-        }
-      }
-    };
-
-    // Adjust on mount and after a short delay to ensure header is rendered
-    adjustPageMargin();
-    const timer = setTimeout(adjustPageMargin, 100);
-    const longerTimer = setTimeout(adjustPageMargin, 500);
-
-    // Also adjust on resize
-    window.addEventListener('resize', adjustPageMargin);
-
-    return () => {
-      window.removeEventListener('resize', adjustPageMargin);
-      clearTimeout(timer);
-      clearTimeout(longerTimer);
-    };
-  }, []);
 
   return (
     <PageTransition>

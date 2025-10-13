@@ -1,39 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem, CardHover, PageTransition } from '../components/ScrollAnimation';
 
 const Home = () => {
-  // Adjust margin-top based on header height
-  useEffect(() => {
-    const adjustPageMargin = () => {
-      const header = document.querySelector('.header');
-      if (header) {
-        const headerHeight = header.offsetHeight;
-        const headerTop = parseInt(getComputedStyle(header).top) || 0;
-        const totalSpace = headerHeight + headerTop;
-        const pageElement = document.querySelector('.home');
-        if (pageElement) {
-          pageElement.style.marginTop = `${totalSpace}px`;
-        }
-      }
-    };
-
-    // Adjust on mount and after a short delay to ensure header is rendered
-    adjustPageMargin();
-    const timer = setTimeout(adjustPageMargin, 100);
-    const longerTimer = setTimeout(adjustPageMargin, 500);
-
-    // Also adjust on resize
-    window.addEventListener('resize', adjustPageMargin);
-
-    return () => {
-      window.removeEventListener('resize', adjustPageMargin);
-      clearTimeout(timer);
-      clearTimeout(longerTimer);
-    };
-  }, []);
-
   return (
     <PageTransition>
       <div className="home">
@@ -228,29 +198,14 @@ const Home = () => {
                   <h2>Convenient Parking</h2>
                   <p>Sahas Uyana offers ample parking space for all visitors, ensuring a hassle-free experience for your events and visits.</p>
                   <ul className="parking-features">
-                    <li>Spacious parking area</li>
-                    <li>Safe and secure</li>
-                    <li>Easy access to all venues</li>
+                    <li>Free parking for all visitors</li>
+                    <li>EV charging stations available</li>
+                    <li>Security surveillance 24/7</li>
+                    <li>Easy access and multiple entry points</li>
                   </ul>
                 </div>
               </FadeInLeft>
             </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="cta section">
-          <div className="container">
-            <FadeInUp>
-              <div className="cta-content">
-                <h2>Ready to Experience Sahas Uyana?</h2>
-                <p>Book your venue today and create unforgettable memories in the cultural heart of Kandy.</p>
-                <div className="cta-actions">
-                  <Link to="/venues#booking-form" className="btn btn-primary">Book Now</Link>
-                  <Link to="/our-story" className="btn btn-secondary">Learn More</Link>
-                </div>
-              </div>
-            </FadeInUp>
           </div>
         </section>
       </div>

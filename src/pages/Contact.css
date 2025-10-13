@@ -1,5 +1,7 @@
 .contact {
   min-height: 100vh;
+  /* Add margin-top to account for fixed header like in Venues page */
+  margin-top: var(--header-total-height, 100px);
 }
 
 /* Hero Section */
@@ -55,19 +57,11 @@
   background: white;
 }
 
-.contact-main .container {
-  max-width: 1400px;
-  padding: 0 1rem;
-}
-
-.ev-info-section .container {
-  max-width: 1400px;
-  padding: 0 1rem;
-}
-
-.faq-section .container {
-  max-width: 1400px;
-  padding: 0 1rem;
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: flex-start;
 }
 
 .contact-form-section {
@@ -384,7 +378,9 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .contact {}
+  .contact {
+    margin-top: var(--header-total-height, 100px);
+  }
 
   .contact-title {
     font-size: 2.5rem;

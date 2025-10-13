@@ -1,5 +1,7 @@
 .helabojun {
   min-height: 100vh;
+  /* Add margin-top to account for fixed header like in Venues page */
+  margin-top: var(--header-total-height, 100px);
 }
 
 /* Hero Section */
@@ -16,31 +18,6 @@
   text-align: center;
   position: relative;
   padding-bottom: 2rem;
-}
-
-.helabojun .container {
-  max-width: 1400px;
-  padding: 0 1rem;
-}
-
-.menu-section .container {
-  max-width: 1400px;
-  padding: 0 1rem;
-}
-
-.ingredients-section .container {
-  max-width: 1400px;
-  padding: 0 1rem;
-}
-
-.visit-section .container {
-  max-width: 1400px;
-  padding: 0 1rem;
-}
-
-.health-section .container {
-  max-width: 1400px;
-  padding: 0 1rem;
 }
 
 .helabojun-title {
@@ -421,7 +398,9 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .helabojun {}
+  .helabojun {
+    margin-top: var(--header-total-height, 100px);
+  }
 
   .helabojun-title {
     font-size: 2.5rem;

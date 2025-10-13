@@ -1,5 +1,7 @@
 .directors-office {
   min-height: 100vh;
+  /* Add margin-top to account for fixed header like in Venues page */
+  margin-top: var(--header-total-height, 100px);
 }
 
 /* Hero Section */
@@ -16,21 +18,6 @@
   text-align: center;
   position: relative;
   padding-bottom: 2rem;
-}
-
-.directors-office .container {
-  max-width: 1400px;
-  padding: 0 1rem;
-}
-
-.speech-section .container {
-  max-width: 1400px;
-  padding: 0 1rem;
-}
-
-.contact-directors .container {
-  max-width: 1400px;
-  padding: 0 1rem;
 }
 
 .directors-title {
@@ -443,7 +430,9 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .directors-office {}
+  .directors-office {
+    margin-top: var(--header-total-height, 100px);
+  }
 
   .directors-title {
     font-size: 2.5rem;

@@ -7,31 +7,6 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
 
-  // Set CSS variable for header height to be used by pages
-  useEffect(() => {
-    const updateHeaderHeight = () => {
-      const header = document.querySelector('.header');
-      if (header) {
-        const headerHeight = header.offsetHeight;
-        const headerTop = parseInt(getComputedStyle(header).top) || 0;
-        const totalSpace = headerHeight + headerTop;
-        document.documentElement.style.setProperty('--header-total-height', `${totalSpace}px`);
-      }
-    };
-
-    // Update on load and resize
-    updateHeaderHeight();
-    window.addEventListener('resize', updateHeaderHeight);
-
-    // Also update after a short delay to ensure styles are applied
-    const timer = setTimeout(updateHeaderHeight, 100);
-
-    return () => {
-      window.removeEventListener('resize', updateHeaderHeight);
-      clearTimeout(timer);
-    };
-  }, []);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -51,6 +26,33 @@ const Header = () => {
     mq.addEventListener ? mq.addEventListener('change', handle) : mq.addListener(handle);
     return () => {
       mq.removeEventListener ? mq.removeEventListener('change', handle) : mq.removeListener(handle);
+    };
+  }, []);
+
+  // Set CSS variable for header height
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      const header = document.querySelector('.header');
+      if (header) {
+        const headerHeight = header.offsetHeight;
+        const headerTop = parseInt(getComputedStyle(header).top) || 0;
+        const totalSpace = headerHeight + headerTop;
+        document.documentElement.style.setProperty('--header-total-height', `${totalSpace}px`);
+      }
+    };
+
+    // Update on load and resize
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight);
+
+    // Also update after a short delay to ensure styles are applied
+    const timer = setTimeout(updateHeaderHeight, 100);
+    const longerTimer = setTimeout(updateHeaderHeight, 500);
+
+    return () => {
+      window.removeEventListener('resize', updateHeaderHeight);
+      clearTimeout(timer);
+      clearTimeout(longerTimer);
     };
   }, []);
 

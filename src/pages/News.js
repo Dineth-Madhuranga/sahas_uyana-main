@@ -9,38 +9,6 @@ const News = () => {
   const [selectedNews, setSelectedNews] = useState(null);
   const [showNewsModal, setShowNewsModal] = useState(false);
 
-  // Adjust margin-top based on header height
-  useEffect(() => {
-    const adjustPageMargin = () => {
-      const header = document.querySelector('.header');
-      if (header) {
-        const headerHeight = header.offsetHeight;
-        const headerTop = parseInt(getComputedStyle(header).top) || 0;
-        const totalSpace = headerHeight + headerTop;
-        const pageElement = document.querySelector('.news');
-        if (pageElement) {
-          pageElement.style.marginTop = `${totalSpace}px`;
-        }
-      }
-    };
-
-    // Adjust on mount and after a short delay to ensure header is rendered
-    adjustPageMargin();
-    const timer = setTimeout(adjustPageMargin, 100);
-    const longerTimer = setTimeout(adjustPageMargin, 500);
-
-    // Also adjust on resize
-    window.addEventListener('resize', adjustPageMargin);
-
-    return () => {
-      window.removeEventListener('resize', adjustPageMargin);
-      clearTimeout(timer);
-      clearTimeout(longerTimer);
-    };
-  }, []);
-
-  // Fetch news from API
-
   // Fetch news from API
   useEffect(() => {
     const fetchNews = async () => {
@@ -235,25 +203,28 @@ const News = () => {
                 </div>
               </StaggerContainer>
             ) : (
-              <FadeInUp>
-                <div className="no-news">
-                  <h3>No News Available</h3>
-                  <p>Check back later for the latest updates and announcements from Sahas Uyana.</p>
-                </div>
-              </FadeInUp>
+              <div className="no-news">
+                <h3>No News Available</h3>
+                <p>Check back later for updates and announcements from Sahas Uyana.</p>
+              </div>
             )}
           </div>
         </section>
 
-        {/* Newsletter Signup */}
+        {/* Newsletter Section */}
         <section className="newsletter-section section">
           <div className="container">
-            <FadeInUp>
-              <div className="newsletter-content">
+            <div className="newsletter-content">
+              <FadeInUp>
                 <h2 className="newsletter-title">Stay Updated</h2>
+              </FadeInUp>
+              <FadeInUp delay={0.2}>
                 <p className="newsletter-description">
-                  Subscribe to our newsletter to receive the latest news and updates about events at Sahas Uyana.
+                  Subscribe to our newsletter to receive the latest news, event announcements,
+                  and special offers directly to your inbox.
                 </p>
+              </FadeInUp>
+              <FadeInUp delay={0.4}>
                 <form className="newsletter-form">
                   <div className="form-group">
                     <input
@@ -267,53 +238,52 @@ const News = () => {
                     </button>
                   </div>
                 </form>
-              </div>
-            </FadeInUp>
+              </FadeInUp>
+            </div>
           </div>
         </section>
 
-        {/* News Detail Modal */}
+        {/* News Modal */}
         {showNewsModal && selectedNews && (
           <div className="news-modal-overlay" onClick={handleCloseModal}>
-            <ScaleIn>
-              <div className="news-modal-content" onClick={(e) => e.stopPropagation()}>
-                <div className="news-modal-header">
-                  <div className="news-modal-category">{selectedNews.category}</div>
-                  <button className="news-modal-close" onClick={handleCloseModal}>
-                    &times;
-                  </button>
-                </div>
-                <div className="news-modal-body">
-                  {selectedNews.imageUrl && (
-                    <div className="news-modal-image">
-                      <img
-                        src={selectedNews.imageUrl}
-                        alt={selectedNews.title}
-                        className="news-modal-img"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                        }}
-                      />
-                    </div>
-                  )}
-                  <h2 className="news-modal-title">{selectedNews.title}</h2>
-                  <div className="news-modal-date">{formatDate(selectedNews.date)}</div>
-                  <div className="news-modal-description">
-                    <p>{selectedNews.description}</p>
-                  </div>
-                  {selectedNews.content && selectedNews.content !== selectedNews.description && (
-                    <div className="news-modal-content-text">
-                      <p>{selectedNews.content}</p>
+            <div className="news-modal-content" onClick={(e) => e.stopPropagation()}>
+              <div className="news-modal-header">
+                <div className="news-modal-category">{selectedNews.category}</div>
+                <button className="news-modal-close" onClick={handleCloseModal}>
+                  ×
+                </button>
+              </div>
+              <div className="news-modal-body">
+                <div className="news-modal-image">
+                  {selectedNews.imageUrl ? (
+                    <img
+                      src={selectedNews.imageUrl}
+                      alt={selectedNews.title}
+                      className="news-modal-img"
+                    />
+                  ) : (
+                    <div className={`news-placeholder ${selectedNews.image}`}>
+                      {selectedNews.title}
                     </div>
                   )}
                 </div>
-                <div className="news-modal-footer">
-                  <button className="btn btn-primary" onClick={handleCloseModal}>
-                    Close
-                  </button>
+                <h2 className="news-modal-title">{selectedNews.title}</h2>
+                <div className="news-modal-date">{formatDate(selectedNews.date)}</div>
+                <div className="news-modal-description">
+                  <p>{selectedNews.description}</p>
+                </div>
+                <div className="news-modal-content-text">
+                  {selectedNews.content && selectedNews.content.split('\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
                 </div>
               </div>
-            </ScaleIn>
+              <div className="news-modal-footer">
+                <button className="btn btn-primary" onClick={handleCloseModal}>
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>

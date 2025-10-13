@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Contact.css';
 import { FadeInUp, FadeInLeft, FadeInRight, PageTransition, StaggerContainer, StaggerItem, CardHover } from '../components/ScrollAnimation';
 import API_BASE_URL from '../config/api';
@@ -6,37 +6,6 @@ import { useToast } from '../components/ToastProvider';
 
 const Contact = () => {
   const { showToast } = useToast();
-
-  // Adjust margin-top based on header height
-  useEffect(() => {
-    const adjustPageMargin = () => {
-      const header = document.querySelector('.header');
-      if (header) {
-        const headerHeight = header.offsetHeight;
-        const headerTop = parseInt(getComputedStyle(header).top) || 0;
-        const totalSpace = headerHeight + headerTop;
-        const pageElement = document.querySelector('.contact');
-        if (pageElement) {
-          pageElement.style.marginTop = `${totalSpace}px`;
-        }
-      }
-    };
-
-    // Adjust on mount and after a short delay to ensure header is rendered
-    adjustPageMargin();
-    const timer = setTimeout(adjustPageMargin, 100);
-    const longerTimer = setTimeout(adjustPageMargin, 500);
-
-    // Also adjust on resize
-    window.addEventListener('resize', adjustPageMargin);
-
-    return () => {
-      window.removeEventListener('resize', adjustPageMargin);
-      clearTimeout(timer);
-      clearTimeout(longerTimer);
-    };
-  }, []);
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -226,61 +195,52 @@ const Contact = () => {
                     </div>
                   </CardHover>
                 </StaggerItem>
-                <StaggerItem>
-                  <CardHover>
-                    <div className="info-card card">
-                      <div className="info-icon">🅿️</div>
-                      <h3>Parking</h3>
-                      <p>Parking available<br />Safe & secure area</p>
-                    </div>
-                  </CardHover>
-                </StaggerItem>
               </div>
             </StaggerContainer>
           </div>
         </section>
 
-        {/* EV Charging Station Info */}
+        {/* EV Information */}
         <section className="ev-info-section section">
           <div className="container">
             <div className="ev-content">
-              <FadeInLeft>
+              <FadeInLeft delay={0.2}>
                 <div className="ev-text">
                   <h2 className="section-title">EV Charging Station</h2>
                   <p className="ev-description">
                     We're committed to sustainability and modern convenience. Our EV charging station
                     is available for visitors with electric vehicles, featuring fast charging capabilities
-                    and 24/7 access.
+                    and competitive rates.
                   </p>
                   <div className="ev-features">
                     <div className="ev-feature">
                       <div className="feature-icon">⚡</div>
                       <div className="feature-text">
                         <h4>Fast Charging</h4>
-                        <p>Quick charge your electric vehicle</p>
-                      </div>
-                    </div>
-                    <div className="ev-feature">
-                      <div className="feature-icon">🕒</div>
-                      <div className="feature-text">
-                        <h4>24/7 Access</h4>
-                        <p>Available around the clock</p>
+                        <p>Quick charge your vehicle with our high-speed chargers</p>
                       </div>
                     </div>
                     <div className="ev-feature">
                       <div className="feature-icon">💰</div>
                       <div className="feature-text">
                         <h4>Competitive Rates</h4>
-                        <p>Affordable charging prices</p>
+                        <p>Affordable pricing for all charging sessions</p>
+                      </div>
+                    </div>
+                    <div className="ev-feature">
+                      <div className="feature-icon">24/7</div>
+                      <div className="feature-text">
+                        <h4>Always Available</h4>
+                        <p>Access our charging stations anytime, day or night</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </FadeInLeft>
-              <FadeInRight delay={0.2}>
+              <FadeInRight delay={0.4}>
                 <div className="ev-image">
                   <div className="ev-placeholder">
-                    <div className="ev-icon">⚡</div>
+                    <div className="ev-icon">🔋</div>
                     <div className="ev-text-overlay">EV Charging Station</div>
                   </div>
                 </div>
@@ -295,40 +255,24 @@ const Contact = () => {
             <FadeInUp>
               <h2 className="section-title">Frequently Asked Questions</h2>
             </FadeInUp>
-            <StaggerContainer>
-              <div className="faq-content">
-                <StaggerItem>
-                  <div className="faq-item">
-                    <h3>How do I book a venue?</h3>
-                    <p>You can book a venue by contacting us through the form above, calling us directly, or visiting our office. We recommend booking in advance, especially for popular dates.</p>
-                  </div>
-                </StaggerItem>
-                <StaggerItem>
-                  <div className="faq-item">
-                    <h3>What are your operating hours?</h3>
-                    <p>We're open daily from 9:00 AM to 10:00 PM. For special events, we can accommodate 24/7 access with prior arrangement.</p>
-                  </div>
-                </StaggerItem>
-                <StaggerItem>
-                  <div className="faq-item">
-                    <h3>Do you provide catering services?</h3>
-                    <p>Yes! Our Helabojun restaurant offers authentic Sri Lankan cuisine. We can also arrange for external catering based on your preferences.</p>
-                  </div>
-                </StaggerItem>
-                <StaggerItem>
-                  <div className="faq-item">
-                    <h3>Is parking available?</h3>
-                    <p>Yes, we have ample parking space for visitors. We also have an EV charging station for electric vehicles.</p>
-                  </div>
-                </StaggerItem>
-                <StaggerItem>
-                  <div className="faq-item">
-                    <h3>Can I visit without booking an event?</h3>
-                    <p>Absolutely! Our grounds are open to the public for visits, dining at Helabojun, and enjoying our cultural exhibitions.</p>
-                  </div>
-                </StaggerItem>
+            <div className="faq-content">
+              <div className="faq-item">
+                <h3>What are your opening hours?</h3>
+                <p>We're open daily from 9:00 AM to 10:00 PM. For special events, we can accommodate 24/7 access with prior arrangement.</p>
               </div>
-            </StaggerContainer>
+              <div className="faq-item">
+                <h3>Do you offer parking facilities?</h3>
+                <p>Yes, we have ample parking space for cars, buses, and motorcycles. EV charging stations are also available.</p>
+              </div>
+              <div className="faq-item">
+                <h3>Can I book venues for private events?</h3>
+                <p>Absolutely! Our venues are perfect for weddings, corporate events, birthday parties, and cultural celebrations. Visit our Venues page or contact us for booking details.</p>
+              </div>
+              <div className="faq-item">
+                <h3>Are pets allowed?</h3>
+                <p>Service animals are welcome. For other pets, please contact us in advance to discuss arrangements.</p>
+              </div>
+            </div>
           </div>
         </section>
       </div>
