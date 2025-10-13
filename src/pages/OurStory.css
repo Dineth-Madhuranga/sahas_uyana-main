@@ -1,7 +1,5 @@
 .our-story {
   min-height: 100vh;
-  /* Add margin-top to account for fixed header like in Venues page */
-  margin-top: var(--header-total-height, 100px);
 }
 
 /* Hero Section */
@@ -373,9 +371,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .our-story {
-    margin-top: var(--header-total-height, 100px);
-  }
+  .our-story {}
 
   .story-title {
     font-size: 2.5rem;

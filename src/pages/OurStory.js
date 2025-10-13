@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './OurStory.css';
 import { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem, CardHover, PageTransition } from '../components/ScrollAnimation';
 
 const OurStory = () => {
+  // Adjust margin-top based on header height
+  useEffect(() => {
+    const adjustPageMargin = () => {
+      const header = document.querySelector('.header');
+      if (header) {
+        const headerHeight = header.offsetHeight;
+        const headerTop = parseInt(getComputedStyle(header).top) || 0;
+        const totalSpace = headerHeight + headerTop;
+        const pageElement = document.querySelector('.our-story');
+        if (pageElement) {
+          pageElement.style.marginTop = `${totalSpace}px`;
+        }
+      }
+    };
+
+    // Adjust on mount and after a short delay to ensure header is rendered
+    adjustPageMargin();
+    const timer = setTimeout(adjustPageMargin, 100);
+    const longerTimer = setTimeout(adjustPageMargin, 500);
+
+    // Also adjust on resize
+    window.addEventListener('resize', adjustPageMargin);
+
+    return () => {
+      window.removeEventListener('resize', adjustPageMargin);
+      clearTimeout(timer);
+      clearTimeout(longerTimer);
+    };
+  }, []);
+
   const timelineEvents = [
     {
       year: "2005",
@@ -98,16 +128,16 @@ const OurStory = () => {
                   <div className="mission-item">
                     <h3>Mission</h3>
                     <p>
-                      To create a vibrant cultural hub that celebrates Sri Lankan heritage while providing 
-                      modern amenities and experiences that bring communities together and promote cultural 
+                      To create a vibrant cultural hub that celebrates Sri Lankan heritage while providing
+                      modern amenities and experiences that bring communities together and promote cultural
                       understanding and appreciation.
                     </p>
                   </div>
                   <div className="mission-item">
                     <h3>Vision</h3>
                     <p>
-                      To be the premier cultural and leisure destination in Sri Lanka, recognized for our 
-                      commitment to preserving traditions, fostering community connections, and providing 
+                      To be the premier cultural and leisure destination in Sri Lanka, recognized for our
+                      commitment to preserving traditions, fostering community connections, and providing
                       exceptional experiences that inspire and delight visitors from around the world.
                     </p>
                   </div>
@@ -165,15 +195,15 @@ const OurStory = () => {
               <FadeInLeft delay={0.2}>
                 <div className="team-text">
                   <p>
-                    Our team consists of dedicated professionals, cultural enthusiasts, and local community 
-                    members who share a common passion for preserving and promoting Sri Lankan culture. 
-                    From our event coordinators to our culinary experts, each team member brings unique 
+                    Our team consists of dedicated professionals, cultural enthusiasts, and local community
+                    members who share a common passion for preserving and promoting Sri Lankan culture.
+                    From our event coordinators to our culinary experts, each team member brings unique
                     skills and perspectives that contribute to the exceptional experiences we provide.
                   </p>
                   <p>
-                    We believe in continuous learning, cultural exchange, and maintaining the highest 
-                    standards of service. Our team regularly participates in cultural workshops, 
-                    community events, and professional development programs to ensure we stay at the 
+                    We believe in continuous learning, cultural exchange, and maintaining the highest
+                    standards of service. Our team regularly participates in cultural workshops,
+                    community events, and professional development programs to ensure we stay at the
                     forefront of cultural preservation and hospitality excellence.
                   </p>
                 </div>

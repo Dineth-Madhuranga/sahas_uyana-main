@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Contact.css';
 import { FadeInUp, FadeInLeft, FadeInRight, PageTransition, StaggerContainer, StaggerItem, CardHover } from '../components/ScrollAnimation';
 import API_BASE_URL from '../config/api';
@@ -6,6 +6,37 @@ import { useToast } from '../components/ToastProvider';
 
 const Contact = () => {
   const { showToast } = useToast();
+
+  // Adjust margin-top based on header height
+  useEffect(() => {
+    const adjustPageMargin = () => {
+      const header = document.querySelector('.header');
+      if (header) {
+        const headerHeight = header.offsetHeight;
+        const headerTop = parseInt(getComputedStyle(header).top) || 0;
+        const totalSpace = headerHeight + headerTop;
+        const pageElement = document.querySelector('.contact');
+        if (pageElement) {
+          pageElement.style.marginTop = `${totalSpace}px`;
+        }
+      }
+    };
+
+    // Adjust on mount and after a short delay to ensure header is rendered
+    adjustPageMargin();
+    const timer = setTimeout(adjustPageMargin, 100);
+    const longerTimer = setTimeout(adjustPageMargin, 500);
+
+    // Also adjust on resize
+    window.addEventListener('resize', adjustPageMargin);
+
+    return () => {
+      window.removeEventListener('resize', adjustPageMargin);
+      clearTimeout(timer);
+      clearTimeout(longerTimer);
+    };
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,7 +53,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: 'POST',
@@ -57,7 +88,7 @@ const Contact = () => {
             </FadeInUp>
             <FadeInUp delay={0.4}>
               <p className="contact-subtitle">
-                We're here to help! Reach out to us with any questions or inquiries. 
+                We're here to help! Reach out to us with any questions or inquiries.
                 Our team is dedicated to providing you with the best possible experience at Sahas Uyana.
               </p>
             </FadeInUp>
@@ -71,76 +102,76 @@ const Contact = () => {
               <FadeInLeft>
                 <div className="contact-form-section">
                   <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="name">Your Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Enter your name"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="subject">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Enter the subject"
-                    required
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Type your message here"
-                    rows="6"
-                    required
-                  ></textarea>
-                </div>
-                
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="name">Your Name</label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="Enter your name"
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="email">Email Address</label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="Enter your email"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="subject">Subject</label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        placeholder="Enter the subject"
+                        required
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="message">Message</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Type your message here"
+                        rows="6"
+                        required
+                      ></textarea>
+                    </div>
+
                     <button type="submit" className="btn btn-primary send-message-btn">
                       Send Message
                     </button>
                   </form>
                 </div>
               </FadeInLeft>
-              
+
               <FadeInRight delay={0.2}>
                 <div className="contact-map-section">
                   <div className="map-container">
-                    <iframe 
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3296.693499017949!2d80.63532545750566!3d7.2914153185732635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae367adc2d9f5d9%3A0xa01266c114784439!2sSahas%20Uyana!5e1!3m2!1sen!2slk!4v1759130861384!5m2!1sen!2slk" 
-                      width="100%" 
-                      height="450" 
-                      style={{border: 0}} 
-                      allowFullScreen="" 
-                      loading="lazy" 
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3296.693499017949!2d80.63532545750566!3d7.2914153185732635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae367adc2d9f5d9%3A0xa01266c114784439!2sSahas%20Uyana!5e1!3m2!1sen!2slk!4v1759130861384!5m2!1sen!2slk"
+                      width="100%"
+                      height="450"
+                      style={{ border: 0 }}
+                      allowFullScreen=""
+                      loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                       title="Sahas Uyana Location"
                     ></iframe>
@@ -217,8 +248,8 @@ const Contact = () => {
                 <div className="ev-text">
                   <h2 className="section-title">EV Charging Station</h2>
                   <p className="ev-description">
-                    We're committed to sustainability and modern convenience. Our EV charging station 
-                    is available for visitors with electric vehicles, featuring fast charging capabilities 
+                    We're committed to sustainability and modern convenience. Our EV charging station
+                    is available for visitors with electric vehicles, featuring fast charging capabilities
                     and 24/7 access.
                   </p>
                   <div className="ev-features">

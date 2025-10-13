@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Helabojun.css';
 import { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem, CardHover, PageTransition } from '../components/ScrollAnimation';
 
 const Helabojun = () => {
+  // Adjust margin-top based on header height
+  useEffect(() => {
+    const adjustPageMargin = () => {
+      const header = document.querySelector('.header');
+      if (header) {
+        const headerHeight = header.offsetHeight;
+        const headerTop = parseInt(getComputedStyle(header).top) || 0;
+        const totalSpace = headerHeight + headerTop;
+        const pageElement = document.querySelector('.helabojun');
+        if (pageElement) {
+          pageElement.style.marginTop = `${totalSpace}px`;
+        }
+      }
+    };
+
+    // Adjust on mount and after a short delay to ensure header is rendered
+    adjustPageMargin();
+    const timer = setTimeout(adjustPageMargin, 100);
+    const longerTimer = setTimeout(adjustPageMargin, 500);
+
+    // Also adjust on resize
+    window.addEventListener('resize', adjustPageMargin);
+
+    return () => {
+      window.removeEventListener('resize', adjustPageMargin);
+      clearTimeout(timer);
+      clearTimeout(longerTimer);
+    };
+  }, []);
+
   const menuItems = [
     {
       id: 1,
@@ -89,8 +119,8 @@ const Helabojun = () => {
             </FadeInUp>
             <FadeInUp delay={0.4}>
               <p className="helabojun-subtitle">
-                Experience the authentic flavors of Sri Lanka at Helabojun, where traditional recipes meet modern culinary techniques. 
-                Our menu features a curated selection of dishes, each prepared with fresh, locally sourced ingredients to deliver 
+                Experience the authentic flavors of Sri Lanka at Helabojun, where traditional recipes meet modern culinary techniques.
+                Our menu features a curated selection of dishes, each prepared with fresh, locally sourced ingredients to deliver
                 an unforgettable dining experience.
               </p>
             </FadeInUp>
@@ -109,20 +139,20 @@ const Helabojun = () => {
                   <StaggerItem key={item.id}>
                     <CardHover>
                       <div className="menu-card card">
-                <div className="menu-image">
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    className="menu-item-image"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                  <div className={`menu-placeholder ${item.name.toLowerCase().replace(/\s+/g, '-')}`} style={{display: 'none'}}>
-                    {item.name}
-                  </div>
-                </div>
+                        <div className="menu-image">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="menu-item-image"
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                              e.target.nextSibling.style.display = 'flex';
+                            }}
+                          />
+                          <div className={`menu-placeholder ${item.name.toLowerCase().replace(/\s+/g, '-')}`} style={{ display: 'none' }}>
+                            {item.name}
+                          </div>
+                        </div>
                         <div className="menu-content">
                           <h3 className="menu-item-name">{item.name}</h3>
                           <p className="menu-item-description">{item.description}</p>
@@ -143,126 +173,126 @@ const Helabojun = () => {
               <FadeInLeft>
                 <div className="ingredients-text">
                   <h2 className="section-title">Our Ingredients</h2>
-              <p className="ingredients-description">
-                We are committed to using the finest ingredients sourced directly from local farmers and suppliers. 
-                Our dishes are prepared with traditional spices and herbs, ensuring an authentic taste of Sri Lanka 
-                that is both fresh and vibrant. Every ingredient is carefully selected to maintain the highest quality 
-                and nutritional value.
-              </p>
-              <div className="ingredient-features">
-                <div className="feature-item">
-                  <div className="feature-icon">🌱</div>
-                  <div className="feature-text">
-                    <h4>Locally Sourced</h4>
-                    <p>Fresh ingredients from local farmers</p>
+                  <p className="ingredients-description">
+                    We are committed to using the finest ingredients sourced directly from local farmers and suppliers.
+                    Our dishes are prepared with traditional spices and herbs, ensuring an authentic taste of Sri Lanka
+                    that is both fresh and vibrant. Every ingredient is carefully selected to maintain the highest quality
+                    and nutritional value.
+                  </p>
+                  <div className="ingredient-features">
+                    <div className="feature-item">
+                      <div className="feature-icon">🌱</div>
+                      <div className="feature-text">
+                        <h4>Locally Sourced</h4>
+                        <p>Fresh ingredients from local farmers</p>
+                      </div>
+                    </div>
+                    <div className="feature-item">
+                      <div className="feature-icon">🌶️</div>
+                      <div className="feature-text">
+                        <h4>Traditional Spices</h4>
+                        <p>Authentic Sri Lankan spice blends</p>
+                      </div>
+                    </div>
+                    <div className="feature-item">
+                      <div className="feature-icon">🥥</div>
+                      <div className="feature-text">
+                        <h4>Fresh Coconut</h4>
+                        <p>Daily fresh coconut products</p>
+                      </div>
+                    </div>
+                    <div className="feature-item">
+                      <div className="feature-icon">🍚</div>
+                      <div className="feature-text">
+                        <h4>Premium Rice</h4>
+                        <p>High-quality local rice varieties</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="feature-item">
-                  <div className="feature-icon">🌶️</div>
-                  <div className="feature-text">
-                    <h4>Traditional Spices</h4>
-                    <p>Authentic Sri Lankan spice blends</p>
+              </FadeInLeft>
+              <FadeInRight>
+                <div className="ingredients-image">
+                  <div className="ingredients-placeholder">
+                    <div className="ingredient-items">
+                      <div className="ingredient-item">🌶️</div>
+                      <div className="ingredient-item">🥥</div>
+                      <div className="ingredient-item">🍚</div>
+                      <div className="ingredient-item">🌱</div>
+                      <div className="ingredient-item">🧄</div>
+                      <div className="ingredient-item">🧅</div>
+                    </div>
                   </div>
                 </div>
-                <div className="feature-item">
-                  <div className="feature-icon">🥥</div>
-                  <div className="feature-text">
-                    <h4>Fresh Coconut</h4>
-                    <p>Daily fresh coconut products</p>
-                  </div>
-                </div>
-                <div className="feature-item">
-                  <div className="feature-icon">🍚</div>
-                  <div className="feature-text">
-                    <h4>Premium Rice</h4>
-                    <p>High-quality local rice varieties</p>
-                  </div>
-                </div>
-              </div>
+              </FadeInRight>
             </div>
-          </FadeInLeft>
-          <FadeInRight>
-            <div className="ingredients-image">
-              <div className="ingredients-placeholder">
-                <div className="ingredient-items">
-                  <div className="ingredient-item">🌶️</div>
-                  <div className="ingredient-item">🥥</div>
-                  <div className="ingredient-item">🍚</div>
-                  <div className="ingredient-item">🌱</div>
-                  <div className="ingredient-item">🧄</div>
-                  <div className="ingredient-item">🧅</div>
-                </div>
-              </div>
-            </div>
-          </FadeInRight>
           </div>
-        </div>
-      </section>
+        </section>
 
         {/* Visit Us */}
-      <section className="visit-section section">
-        <div className="container">
-          <div className="visit-content">
-            <div className="visit-text">
-              <h2 className="section-title">Visit Us</h2>
-              <p className="visit-description">
-                Helabojun is located within the serene and cultural ambiance of Sahas Uyana. 
-                Join us for lunch or dinner and savor the true essence of Sri Lankan cuisine in a beautiful setting. 
-                Our restaurant offers both indoor and outdoor seating options, allowing you to enjoy your meal 
-                in the most comfortable environment.
-              </p>
-              <div className="visit-info">
-                <div className="info-item">
-                  <div className="info-icon">🕒</div>
-                  <div className="info-text">
-                    <h4>Opening Hours</h4>
-                    <p>Daily: 11:00 AM - 10:00 PM</p>
+        <section className="visit-section section">
+          <div className="container">
+            <div className="visit-content">
+              <div className="visit-text">
+                <h2 className="section-title">Visit Us</h2>
+                <p className="visit-description">
+                  Helabojun is located within the serene and cultural ambiance of Sahas Uyana.
+                  Join us for lunch or dinner and savor the true essence of Sri Lankan cuisine in a beautiful setting.
+                  Our restaurant offers both indoor and outdoor seating options, allowing you to enjoy your meal
+                  in the most comfortable environment.
+                </p>
+                <div className="visit-info">
+                  <div className="info-item">
+                    <div className="info-icon">🕒</div>
+                    <div className="info-text">
+                      <h4>Opening Hours</h4>
+                      <p>Daily: 11:00 AM - 10:00 PM</p>
+                    </div>
                   </div>
-                </div>
-                <div className="info-item">
-                  <div className="info-icon">📍</div>
-                  <div className="info-text">
-                    <h4>Location</h4>
-                    <p>Sahas Uyana, Kandy, Sri Lanka</p>
+                  <div className="info-item">
+                    <div className="info-icon">📍</div>
+                    <div className="info-text">
+                      <h4>Location</h4>
+                      <p>Sahas Uyana, Kandy, Sri Lanka</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Health Benefits */}
-      <section className="health-section section">
-        <div className="container">
-          <h2 className="section-title">Traditional Healthy Foods</h2>
-          <p className="section-subtitle">
-            Discover the health benefits of traditional Sri Lankan cuisine
-          </p>
-          <div className="health-grid">
-            <div className="health-card card">
-              <div className="health-icon">💚</div>
-              <h3>Nutritious & Balanced</h3>
-              <p>Our traditional dishes are rich in nutrients, fiber, and essential vitamins, providing a balanced diet that supports overall health and well-being.</p>
-            </div>
-            <div className="health-card card">
-              <div className="health-icon">🌿</div>
-              <h3>Natural Ingredients</h3>
-              <p>We use only natural, unprocessed ingredients without artificial preservatives or additives, ensuring you get the purest flavors and health benefits.</p>
-            </div>
-            <div className="health-card card">
-              <div className="health-icon">🔥</div>
-              <h3>Digestive Health</h3>
-              <p>Traditional Sri Lankan spices like turmeric, ginger, and cumin are known for their digestive properties and anti-inflammatory benefits.</p>
-            </div>
-            <div className="health-card card">
-              <div className="health-icon">💪</div>
-              <h3>Energy & Vitality</h3>
-              <p>Our meals provide sustained energy through complex carbohydrates and healthy fats, keeping you energized throughout the day.</p>
+        {/* Health Benefits */}
+        <section className="health-section section">
+          <div className="container">
+            <h2 className="section-title">Traditional Healthy Foods</h2>
+            <p className="section-subtitle">
+              Discover the health benefits of traditional Sri Lankan cuisine
+            </p>
+            <div className="health-grid">
+              <div className="health-card card">
+                <div className="health-icon">💚</div>
+                <h3>Nutritious & Balanced</h3>
+                <p>Our traditional dishes are rich in nutrients, fiber, and essential vitamins, providing a balanced diet that supports overall health and well-being.</p>
+              </div>
+              <div className="health-card card">
+                <div className="health-icon">🌿</div>
+                <h3>Natural Ingredients</h3>
+                <p>We use only natural, unprocessed ingredients without artificial preservatives or additives, ensuring you get the purest flavors and health benefits.</p>
+              </div>
+              <div className="health-card card">
+                <div className="health-icon">🔥</div>
+                <h3>Digestive Health</h3>
+                <p>Traditional Sri Lankan spices like turmeric, ginger, and cumin are known for their digestive properties and anti-inflammatory benefits.</p>
+              </div>
+              <div className="health-card card">
+                <div className="health-icon">💪</div>
+                <h3>Energy & Vitality</h3>
+                <p>Our meals provide sustained energy through complex carbohydrates and healthy fats, keeping you energized throughout the day.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
       </div>
     </PageTransition>
   );

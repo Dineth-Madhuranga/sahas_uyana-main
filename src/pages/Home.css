@@ -744,9 +744,7 @@
 }
 
 @media (max-width: 576px) {
-  .home {
-    margin-top: var(--header-total-height, 100px);
-  }
+  .home {}
 
   .hero {
     padding: 1rem 0;
@@ -806,9 +804,7 @@
 }
 
 @media (max-width: 480px) {
-  .home {
-    margin-top: var(--header-total-height, 90px);
-  }
+  .home {}
 
   .hero {
     padding: 0.8rem 0;
@@ -877,9 +873,7 @@
 
 /* Extra small devices (phones in portrait, less than 375px) */
 @media (max-width: 374px) {
-  .home {
-    margin-top: var(--header-total-height, 50px);
-  }
+  .home {}
 
   .hero-content {
     padding: 0.5rem 0.3rem;

@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem, CardHover, PageTransition } from '../components/ScrollAnimation';
 
 const Home = () => {
+  // Adjust margin-top based on header height
+  useEffect(() => {
+    const adjustPageMargin = () => {
+      const header = document.querySelector('.header');
+      if (header) {
+        const headerHeight = header.offsetHeight;
+        const headerTop = parseInt(getComputedStyle(header).top) || 0;
+        const totalSpace = headerHeight + headerTop;
+        const pageElement = document.querySelector('.home');
+        if (pageElement) {
+          pageElement.style.marginTop = `${totalSpace}px`;
+        }
+      }
+    };
+
+    // Adjust on mount and after a short delay to ensure header is rendered
+    adjustPageMargin();
+    const timer = setTimeout(adjustPageMargin, 100);
+    const longerTimer = setTimeout(adjustPageMargin, 500);
+
+    // Also adjust on resize
+    window.addEventListener('resize', adjustPageMargin);
+
+    return () => {
+      window.removeEventListener('resize', adjustPageMargin);
+      clearTimeout(timer);
+      clearTimeout(longerTimer);
+    };
+  }, []);
+
   return (
     <PageTransition>
       <div className="home">
@@ -97,67 +127,67 @@ const Home = () => {
                 <StaggerItem>
                   <CardHover>
                     <div className="venue-card card">
-              <div className="venue-image">
-                <div className="venue-placeholder">Open Air Arena</div>
-                <div className="venue-badge">Available</div>
-              </div>
-              <div className="venue-content">
-                <h3>Open Air Arena</h3>
-                <p>Roofed arena with 26x26 metal stage and 8,000 seating capacity. Perfect for musical shows, political gatherings, acoustic concerts, exhibitions/fairs, group meetings, and classes.</p>
-                <div className="venue-price">LKR 1,250,000 per day</div>
-                      <Link to="/venues" className="btn btn-primary">Learn More</Link>
+                      <div className="venue-image">
+                        <div className="venue-placeholder">Open Air Arena</div>
+                        <div className="venue-badge">Available</div>
+                      </div>
+                      <div className="venue-content">
+                        <h3>Open Air Arena</h3>
+                        <p>Roofed arena with 26x26 metal stage and 8,000 seating capacity. Perfect for musical shows, political gatherings, acoustic concerts, exhibitions/fairs, group meetings, and classes.</p>
+                        <div className="venue-price">LKR 1,250,000 per day</div>
+                        <Link to="/venues" className="btn btn-primary">Learn More</Link>
+                      </div>
                     </div>
-                  </div>
-                </CardHover>
-              </StaggerItem>
-              <StaggerItem>
-                <CardHover>
-                  <div className="venue-card card">
-                    <div className="venue-image">
-                      <div className="venue-placeholder">Open Area</div>
-                      <div className="venue-badge">Available</div>
+                  </CardHover>
+                </StaggerItem>
+                <StaggerItem>
+                  <CardHover>
+                    <div className="venue-card card">
+                      <div className="venue-image">
+                        <div className="venue-placeholder">Open Area</div>
+                        <div className="venue-badge">Available</div>
+                      </div>
+                      <div className="venue-content">
+                        <h3>Open Area</h3>
+                        <p>Flexible outdoor space ideal for exhibitions and fairs with variable capacity arrangements.</p>
+                        <div className="venue-price">LKR 150,000 per day</div>
+                        <Link to="/venues" className="btn btn-primary">Learn More</Link>
+                      </div>
                     </div>
-                    <div className="venue-content">
-                      <h3>Open Area</h3>
-                      <p>Flexible outdoor space ideal for exhibitions and fairs with variable capacity arrangements.</p>
-                      <div className="venue-price">LKR 150,000 per day</div>
-                      <Link to="/venues" className="btn btn-primary">Learn More</Link>
+                  </CardHover>
+                </StaggerItem>
+                <StaggerItem>
+                  <CardHover>
+                    <div className="venue-card card">
+                      <div className="venue-image">
+                        <div className="venue-placeholder">Vendor Stalls</div>
+                        <div className="venue-badge">85 Available</div>
+                      </div>
+                      <div className="venue-content">
+                        <h3>Vendor Stalls</h3>
+                        <p>100 total stalls (6x4 feet each) perfect for small businesses and market vendors. Monthly rental basis.</p>
+                        <div className="venue-price">LKR 30,000 per month</div>
+                        <Link to="/venues" className="btn btn-primary">Learn More</Link>
+                      </div>
                     </div>
-                  </div>
-                </CardHover>
-              </StaggerItem>
-              <StaggerItem>
-                <CardHover>
-                  <div className="venue-card card">
-                    <div className="venue-image">
-                      <div className="venue-placeholder">Vendor Stalls</div>
-                      <div className="venue-badge">85 Available</div>
+                  </CardHover>
+                </StaggerItem>
+                <StaggerItem>
+                  <CardHover>
+                    <div className="venue-card card">
+                      <div className="venue-image">
+                        <div className="venue-placeholder">Kids Park</div>
+                        <div className="venue-badge">Free Access</div>
+                      </div>
+                      <div className="venue-content">
+                        <h3>Kids Park</h3>
+                        <p>Free recreational area designed for children and families with safe play equipment and family-friendly facilities.</p>
+                        <div className="venue-price">Free of charge</div>
+                        <span className="btn btn-secondary disabled">Free Access</span>
+                      </div>
                     </div>
-                    <div className="venue-content">
-                      <h3>Vendor Stalls</h3>
-                      <p>100 total stalls (6x4 feet each) perfect for small businesses and market vendors. Monthly rental basis.</p>
-                      <div className="venue-price">LKR 30,000 per month</div>
-                      <Link to="/venues" className="btn btn-primary">Learn More</Link>
-                    </div>
-                  </div>
-                </CardHover>
-              </StaggerItem>
-              <StaggerItem>
-                <CardHover>
-                  <div className="venue-card card">
-                    <div className="venue-image">
-                      <div className="venue-placeholder">Kids Park</div>
-                      <div className="venue-badge">Free Access</div>
-                    </div>
-                    <div className="venue-content">
-                      <h3>Kids Park</h3>
-                      <p>Free recreational area designed for children and families with safe play equipment and family-friendly facilities.</p>
-                      <div className="venue-price">Free of charge</div>
-                      <span className="btn btn-secondary disabled">Free Access</span>
-                    </div>
-                  </div>
-                </CardHover>
-              </StaggerItem>
+                  </CardHover>
+                </StaggerItem>
               </div>
             </StaggerContainer>
           </div>
