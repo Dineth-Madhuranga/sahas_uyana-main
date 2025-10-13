@@ -6,7 +6,7 @@
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10000;
+  z-index: 1000;
   width: 95%;
   max-width: 1300px;
   min-height: 80px;
@@ -17,12 +17,6 @@
 /* Safety: ensure any overlay element is hidden completely */
 .mobile-menu-overlay {
   display: none !important;
-}
-
-/* Ensure proper positioning context */
-.header-content {
-  position: relative;
-  z-index: 1000;
 }
 
 .header .container {
@@ -37,8 +31,7 @@
   padding: 1.5rem 2rem;
   position: relative;
   min-height: 80px;
-  z-index: 2000;
-  /* Ensure nav sits above overlay */
+  z-index: 2000; /* Ensure nav sits above overlay */
 }
 
 .logo {
@@ -68,9 +61,6 @@
 .nav {
   display: flex;
   align-items: center;
-  /* Ensure proper positioning context */
-  position: relative;
-  z-index: 10020;
 }
 
 .nav-left {
@@ -160,9 +150,6 @@
   justify-content: center;
   min-width: 40px;
   min-height: 40px;
-  /* Ensure proper touch target and positioning */
-  position: relative;
-  z-index: 10050;
 }
 
 .mobile-menu-toggle span {
@@ -177,11 +164,9 @@
 .mobile-menu-toggle.open span:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
-
 .mobile-menu-toggle.open span:nth-child(2) {
   opacity: 0;
 }
-
 .mobile-menu-toggle.open span:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
 }
@@ -191,12 +176,12 @@
   .mobile-menu-toggle {
     display: flex !important;
   }
-
+  
   .nav-left,
   .nav-right {
     display: none;
   }
-
+  
   .nav-open {
     display: block !important;
   }
@@ -214,10 +199,8 @@
     /* Remove any dim/blur effect on mobile */
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.95) !important;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    /* Ensure header stays on top */
-    z-index: 10000;
   }
 
   .header-content {
@@ -262,8 +245,7 @@
     position: static;
     order: 3;
     width: 100%;
-    display: none;
-    /* hidden until opened */
+    display: none; /* hidden until opened */
     z-index: 2005;
   }
 
@@ -297,8 +279,6 @@
     position: relative;
     z-index: 10030;
     pointer-events: auto;
-    /* Ensure proper positioning on all pages */
-    transform: translateZ(0);
   }
 
   /* Unify menus: make left and right lists look like one continuous list */
@@ -310,27 +290,23 @@
     padding: 0;
     margin-top: 0;
   }
-
   /* Mobile single list box styling */
   .nav-mobile .nav-list {
     background: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     border-radius: 8px;
     padding: 1rem;
     margin-top: 1rem;
   }
-
   /* Remove extra spacing between the two blocks */
   .nav-left,
   .nav-right {
     margin: 0;
   }
-
   /* Add subtle separators between items across both lists */
   .nav-item {
     border-bottom: 1px solid #eee;
   }
-
   /* Remove border from the very last item (in right list last-child) */
   .nav-right .nav-item:last-child {
     border-bottom: none;
@@ -361,19 +337,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 900;
-    /* below header and menus */
-    pointer-events: none;
-    /* purely visual, never blocks clicks */
-  }
-
-  /* Fix for pages with positioning issues */
-  .nav-mobile .nav-list,
-  .nav-left .nav-list,
-  .nav-right .nav-list {
-    position: relative;
-    z-index: 10040;
+    background: rgba(0,0,0,0.3);
+    z-index: 900; /* below header and menus */
+    pointer-events: none; /* purely visual, never blocks clicks */
   }
 }
 

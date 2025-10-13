@@ -29,33 +29,6 @@ const Header = () => {
     };
   }, []);
 
-  // Set CSS variable for header height
-  useEffect(() => {
-    const updateHeaderHeight = () => {
-      const header = document.querySelector('.header');
-      if (header) {
-        const headerHeight = header.offsetHeight;
-        const headerTop = parseInt(getComputedStyle(header).top) || 0;
-        const totalSpace = headerHeight + headerTop;
-        document.documentElement.style.setProperty('--header-total-height', `${totalSpace}px`);
-      }
-    };
-
-    // Update on load and resize
-    updateHeaderHeight();
-    window.addEventListener('resize', updateHeaderHeight);
-
-    // Also update after a short delay to ensure styles are applied
-    const timer = setTimeout(updateHeaderHeight, 100);
-    const longerTimer = setTimeout(updateHeaderHeight, 500);
-
-    return () => {
-      window.removeEventListener('resize', updateHeaderHeight);
-      clearTimeout(timer);
-      clearTimeout(longerTimer);
-    };
-  }, []);
-
   const isActive = (path) => {
     return location.pathname === path;
   };
@@ -64,14 +37,14 @@ const Header = () => {
     <header className="header">
       <div className="container">
         {/* Overlay removed to prevent dark dim layer and any stacking issues */}
-
+        
         <div className="header-content">
           {/* Logo - Centered */}
           <div className="logo">
             <Link to="/">
-              <img
-                src="https://i.postimg.cc/V606gTTK/imgi-1-327028694-692281699014840-6610880966568510493-n-removebg-preview.png"
-                alt="Sahas Uyana Logo"
+              <img 
+                src="https://i.postimg.cc/V606gTTK/imgi-1-327028694-692281699014840-6610880966568510493-n-removebg-preview.png" 
+                alt="Sahas Uyana Logo" 
                 className="logo-image"
               />
             </Link>

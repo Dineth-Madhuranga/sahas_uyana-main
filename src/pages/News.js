@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './News.css';
-import { FadeInUp, StaggerContainer, StaggerItem, PageTransition, CardHover } from '../components/ScrollAnimation';
+import { FadeInUp, StaggerContainer, StaggerItem, PageTransition, CardHover, ScaleIn } from '../components/ScrollAnimation';
 import API_BASE_URL from '../config/api';
 
 const News = () => {
@@ -202,93 +202,91 @@ const News = () => {
                 ))}
               </div>
             </StaggerContainer>
-          ) : (
-            <div className="no-news">
-              <h3>No News Available</h3>
-              <p>Check back later for updates and announcements from Sahas Uyana.</p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="newsletter-section section">
-        <div className="container">
-          <div className="newsletter-content">
-            <FadeInUp>
-              <h2 className="newsletter-title">Stay Updated</h2>
-            </FadeInUp>
-            <FadeInUp delay={0.2}>
-              <p className="newsletter-description">
-                Subscribe to our newsletter to receive the latest news, event announcements, 
-                and special offers directly to your inbox.
-              </p>
-            </FadeInUp>
-            <FadeInUp delay={0.4}>
-              <form className="newsletter-form">
-                <div className="form-group">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email address" 
-                    className="newsletter-input"
-                    required 
-                  />
-                  <button type="submit" className="btn btn-primary newsletter-btn">
-                    Subscribe
-                  </button>
+            ) : (
+              <FadeInUp>
+                <div className="no-news">
+                  <h3>No News Available</h3>
+                  <p>Check back later for the latest updates and announcements from Sahas Uyana.</p>
                 </div>
-              </form>
+              </FadeInUp>
+            )}
+          </div>
+        </section>
+
+        {/* Newsletter Signup */}
+        <section className="newsletter-section section">
+          <div className="container">
+            <FadeInUp>
+              <div className="newsletter-content">
+                <h2 className="newsletter-title">Stay Updated</h2>
+                <p className="newsletter-description">
+                  Subscribe to our newsletter to receive the latest news and updates about events at Sahas Uyana.
+                </p>
+                <form className="newsletter-form">
+                  <div className="form-group">
+                    <input 
+                      type="email" 
+                      placeholder="Enter your email address"
+                      className="newsletter-input"
+                      required
+                    />
+                    <button type="submit" className="btn btn-primary newsletter-btn">
+                      Subscribe
+                    </button>
+                  </div>
+                </form>
+              </div>
             </FadeInUp>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* News Modal */}
-      {showNewsModal && selectedNews && (
-        <div className="news-modal-overlay" onClick={handleCloseModal}>
-          <div className="news-modal-content" onClick={(e) => e.stopPropagation()}>
+        {/* News Detail Modal */}
+        {showNewsModal && selectedNews && (
+          <div className="news-modal-overlay" onClick={handleCloseModal}>
+            <ScaleIn>
+              <div className="news-modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="news-modal-header">
               <div className="news-modal-category">{selectedNews.category}</div>
               <button className="news-modal-close" onClick={handleCloseModal}>
-                ×
+                &times;
               </button>
             </div>
             <div className="news-modal-body">
-              <div className="news-modal-image">
-                {selectedNews.imageUrl ? (
+              {selectedNews.imageUrl && (
+                <div className="news-modal-image">
                   <img 
                     src={selectedNews.imageUrl} 
                     alt={selectedNews.title}
                     className="news-modal-img"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
                   />
-                ) : (
-                  <div className={`news-placeholder ${selectedNews.image}`}>
-                    {selectedNews.title}
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
               <h2 className="news-modal-title">{selectedNews.title}</h2>
               <div className="news-modal-date">{formatDate(selectedNews.date)}</div>
               <div className="news-modal-description">
                 <p>{selectedNews.description}</p>
               </div>
-              <div className="news-modal-content-text">
-                {selectedNews.content && selectedNews.content.split('\n').map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
+              {selectedNews.content && selectedNews.content !== selectedNews.description && (
+                <div className="news-modal-content-text">
+                  <p>{selectedNews.content}</p>
+                </div>
+              )}
             </div>
             <div className="news-modal-footer">
               <button className="btn btn-primary" onClick={handleCloseModal}>
                 Close
               </button>
             </div>
+              </div>
+            </ScaleIn>
           </div>
-        </div>
-      )}
-    </div>
-  </PageTransition>
-);
+        )}
+      </div>
+    </PageTransition>
+  );
 };
 
 export default News;
