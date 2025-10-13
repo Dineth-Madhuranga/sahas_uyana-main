@@ -376,6 +376,7 @@
 
   .story-subtitle {
     font-size: 1.1rem;
+    padding: 0 1rem;
   }
 
   .timeline::before {
@@ -404,6 +405,7 @@
   .team-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 0 1rem;
   }
 
   .mission-text .section-title {
@@ -423,16 +425,27 @@
   .values-grid,
   .future-plans {
     grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .timeline-section {
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .story-hero {
     padding: 2rem 0;
+    height: 60vh;
   }
 
   .story-title {
     font-size: 2rem;
+  }
+
+  .story-subtitle {
+    font-size: 1rem;
+    padding: 0 0.5rem;
   }
 
   .timeline-item {
@@ -461,5 +474,31 @@
 
   .team-placeholder {
     height: 150px;
+  }
+
+  .mission-content,
+  .team-content {
+    padding: 0 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .values-grid,
+  .future-plans {
+    padding: 0 0.5rem;
+    gap: 1rem;
+  }
+
+  .timeline-section {
+    padding: 0 0.5rem;
+  }
+
+  .value-card,
+  .future-item {
+    padding: 1.5rem;
+  }
+
+  .value-title,
+  .future-item h3 {
+    font-size: 1.1rem;
   }
 }

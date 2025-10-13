@@ -323,6 +323,15 @@
 
   .news-subtitle {
     font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .news-content {
+    padding: 1rem;
+  }
+
+  .news-item-title {
+    font-size: 1.2rem;
   }
 
   .news-items {
@@ -357,20 +366,49 @@
 @media (max-width: 480px) {
   .news-hero {
     padding: 2rem 0;
+    height: 60vh;
   }
 
   .news-title {
     font-size: 2rem;
   }
 
+  .news-subtitle {
+    font-size: 1rem;
+  }
+
   .news-card {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
   }
 
   .news-meta {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
+  }
+
+  .news-items {
+    gap: 1rem;
+  }
+
+  .news-grid .container {
+    padding: 0 0.5rem;
+  }
+
+  .news-content {
+    padding: 0.8rem;
+  }
+
+  .news-item-title {
+    font-size: 1.1rem;
+  }
+
+  .newsletter-title {
+    font-size: 1.8rem;
+  }
+
+  .newsletter-description {
+    font-size: 1rem;
   }
 }
 

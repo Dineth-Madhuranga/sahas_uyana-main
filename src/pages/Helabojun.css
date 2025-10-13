@@ -406,12 +406,14 @@
 
   .helabojun-subtitle {
     font-size: 1.1rem;
+    padding: 0 1rem;
   }
 
   .ingredients-content,
   .visit-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 0 1rem;
   }
 
   .ingredients-text .section-title,
@@ -440,22 +442,71 @@
   .map-placeholder {
     height: 250px;
   }
+
+  .menu-grid {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+
+  .menu-content {
+    padding: 1rem;
+  }
+
+  .menu-item-name {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 480px) {
   .helabojun-hero {
     padding: 2rem 0;
+    height: 60vh;
   }
 
   .helabojun-title {
     font-size: 2rem;
   }
 
+  .helabojun-subtitle {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
   .menu-grid {
     grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+    gap: 1rem;
   }
 
   .health-grid {
     grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+    gap: 1rem;
+  }
+
+  .ingredients-content,
+  .visit-content {
+    padding: 0 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .menu-content {
+    padding: 0.8rem;
+  }
+
+  .menu-item-name {
+    font-size: 1rem;
+  }
+
+  .health-card {
+    padding: 1.5rem;
+  }
+
+  .health-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .map-placeholder {
+    height: 200px;
   }
 }

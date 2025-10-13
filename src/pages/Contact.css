@@ -45,6 +45,21 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Contact Main Section */
+.contact-main {
+  background: white;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: flex-start;
 }
 
 .contact-form-section {
@@ -371,6 +386,7 @@
   .contact-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 0 1rem;
   }
 
   .form-row {
@@ -399,19 +415,33 @@
   .info-grid {
     grid-template-columns: 1fr;
   }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .contact-form-section {
+    padding: 1rem 0;
+  }
 }
 
 @media (max-width: 480px) {
   .contact-hero {
     padding: 2rem 0;
+    height: 60vh;
   }
 
   .contact-title {
     font-size: 2rem;
   }
 
+  .contact-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
   .contact-form {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .map-container {
@@ -424,6 +454,19 @@
   }
 
   .faq-item {
+    padding: 1rem;
+  }
+
+  .contact-content {
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .info-card {
     padding: 1.5rem;
+  }
+
+  .send-message-btn {
+    padding: 0.8rem 1.5rem;
   }
 }

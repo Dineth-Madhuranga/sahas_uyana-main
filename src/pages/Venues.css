@@ -47,6 +47,29 @@
   max-width: 1400px;
   margin: 0 auto;
   align-items: stretch;
+  padding: 0 1rem;
+}
+
+/* Venues Grid */
+.venues-grid {
+  padding: 5rem 0;
+  background: #f8f9fa;
+}
+
+.venues-grid h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: #1976D2;
+}
+
+.venues-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: stretch;
 }
 
 .venue-card {
@@ -444,6 +467,7 @@
 
   .venues-list {
     grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
 
   .form-row {
@@ -482,6 +506,19 @@
   .calendar-modal-overlay {
     padding: 0.75rem;
   }
+
+  .venues-grid h2 {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+
+  .booking-form {
+    padding: 1.5rem;
+  }
+
+  .booking-section h2 {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -495,7 +532,7 @@
   }
 
   .booking-form {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   /* Calendar responsive styles */
@@ -568,6 +605,24 @@
   .stall-box {
     min-height: 45px;
     font-size: 0.7rem;
+  }
+
+  .venues-list {
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .venue-info {
+    padding: 1rem;
+  }
+
+  .venue-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .submit-btn {
+    padding: 0.8rem;
+    font-size: 1rem;
   }
 }
 

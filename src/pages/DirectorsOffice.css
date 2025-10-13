@@ -438,11 +438,13 @@
 
   .directors-subtitle {
     font-size: 1.1rem;
+    padding: 0 1rem;
   }
 
   .speech-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 0 1rem;
   }
 
   .director-photo {
@@ -456,12 +458,14 @@
 
   .directors-list {
     grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
 
   .philosophy-content,
   .contact-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 0 1rem;
   }
 
   .philosophy-placeholder {
@@ -472,15 +476,29 @@
   .contact-form .form-row {
     grid-template-columns: 1fr;
   }
+
+  .speech-text {
+    padding: 0 1rem;
+  }
+
+  .philosophy-text {
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 480px) {
   .directors-hero {
     padding: 2rem 0;
+    height: 60vh;
   }
 
   .directors-title {
     font-size: 2rem;
+  }
+
+  .directors-subtitle {
+    font-size: 1rem;
+    padding: 0 0.5rem;
   }
 
   .director-photo {
@@ -498,6 +516,37 @@
   }
 
   .contact-form {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+
+  .speech-content,
+  .philosophy-content,
+  .contact-content {
+    padding: 0 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .director-photo {
+    width: 180px;
+    height: 220px;
+  }
+
+  .philosophy-placeholder {
+    width: 180px;
+    height: 180px;
+  }
+
+  .speech-text,
+  .philosophy-text {
+    padding: 0 0.5rem;
+  }
+
+  .contact-form .form-group {
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.6rem;
   }
 }
