@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './News.css';
-import { FadeInUp, StaggerContainer, StaggerItem, PageTransition, CardHover, ScaleIn } from '../components/ScrollAnimation';
+import { FadeInUp, StaggerContainer, StaggerItem, PageTransition, CardHover } from '../components/ScrollAnimation';
 import API_BASE_URL from '../config/api';
 
 const News = () => {
@@ -15,7 +15,7 @@ const News = () => {
       try {
         const response = await fetch(`${API_BASE_URL}/api/news`);
         const newsData = await response.json();
-
+        
         if (response.ok && newsData.newsItems) {
           // Transform data (no need to filter since all news will be published)
           const newsItems = newsData.newsItems
@@ -30,7 +30,7 @@ const News = () => {
               imageUrl: news.image && news.image.url ? news.image.url : null
             }))
             .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by newest first
-
+          
           setNewsItems(newsItems);
         } else {
           console.error('Failed to fetch news:', newsData.message);
@@ -161,134 +161,134 @@ const News = () => {
                     <StaggerItem key={item.id}>
                       <CardHover>
                         <article className="news-card card">
-                          <div className="news-image">
-                            {item.imageUrl ? (
-                              <img
-                                src={item.imageUrl}
-                                alt={item.title}
-                                className="news-real-image"
-                                onError={(e) => {
-                                  e.target.style.display = 'none';
-                                  e.target.nextSibling.style.display = 'flex';
-                                }}
-                              />
-                            ) : null}
-                            <div
-                              className={`news-placeholder ${item.image}`}
-                              style={{
-                                display: item.imageUrl ? 'none' : 'flex'
-                              }}
-                            >
-                              {item.title}
-                            </div>
-                            <div className="news-category">{item.category}</div>
-                          </div>
-                          <div className="news-content">
-                            <h3 className="news-item-title">{item.title}</h3>
-                            <p className="news-item-description">{item.description}</p>
-                            <div className="news-meta">
-                              <span className="news-date">{formatDate(item.date)}</span>
-                              <button
-                                className="read-more"
-                                onClick={() => handleReadMore(item)}
-                              >
-                                Read More →
-                              </button>
-                            </div>
-                          </div>
-                        </article>
-                      </CardHover>
-                    </StaggerItem>
-                  ))}
-                </div>
-              </StaggerContainer>
-            ) : (
-              <div className="no-news">
-                <h3>No News Available</h3>
-                <p>Check back later for updates and announcements from Sahas Uyana.</p>
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Newsletter Section */}
-        <section className="newsletter-section section">
-          <div className="container">
-            <div className="newsletter-content">
-              <FadeInUp>
-                <h2 className="newsletter-title">Stay Updated</h2>
-              </FadeInUp>
-              <FadeInUp delay={0.2}>
-                <p className="newsletter-description">
-                  Subscribe to our newsletter to receive the latest news, event announcements,
-                  and special offers directly to your inbox.
-                </p>
-              </FadeInUp>
-              <FadeInUp delay={0.4}>
-                <form className="newsletter-form">
-                  <div className="form-group">
-                    <input
-                      type="email"
-                      placeholder="Enter your email address"
-                      className="newsletter-input"
-                      required
-                    />
-                    <button type="submit" className="btn btn-primary newsletter-btn">
-                      Subscribe
-                    </button>
-                  </div>
-                </form>
-              </FadeInUp>
-            </div>
-          </div>
-        </section>
-
-        {/* News Modal */}
-        {showNewsModal && selectedNews && (
-          <div className="news-modal-overlay" onClick={handleCloseModal}>
-            <div className="news-modal-content" onClick={(e) => e.stopPropagation()}>
-              <div className="news-modal-header">
-                <div className="news-modal-category">{selectedNews.category}</div>
-                <button className="news-modal-close" onClick={handleCloseModal}>
-                  ×
-                </button>
-              </div>
-              <div className="news-modal-body">
-                <div className="news-modal-image">
-                  {selectedNews.imageUrl ? (
-                    <img
-                      src={selectedNews.imageUrl}
-                      alt={selectedNews.title}
-                      className="news-modal-img"
-                    />
-                  ) : (
-                    <div className={`news-placeholder ${selectedNews.image}`}>
-                      {selectedNews.title}
+                  <div className="news-image">
+                    {item.imageUrl ? (
+                      <img 
+                        src={item.imageUrl} 
+                        alt={item.title}
+                        className="news-real-image"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                    ) : null}
+                    <div 
+                      className={`news-placeholder ${item.image}`}
+                      style={{
+                        display: item.imageUrl ? 'none' : 'flex'
+                      }}
+                    >
+                      {item.title}
                     </div>
-                  )}
-                </div>
-                <h2 className="news-modal-title">{selectedNews.title}</h2>
-                <div className="news-modal-date">{formatDate(selectedNews.date)}</div>
-                <div className="news-modal-description">
-                  <p>{selectedNews.description}</p>
-                </div>
-                <div className="news-modal-content-text">
-                  {selectedNews.content && selectedNews.content.split('\n').map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
-                </div>
+                    <div className="news-category">{item.category}</div>
+                  </div>
+                  <div className="news-content">
+                    <h3 className="news-item-title">{item.title}</h3>
+                    <p className="news-item-description">{item.description}</p>
+                    <div className="news-meta">
+                      <span className="news-date">{formatDate(item.date)}</span>
+                      <button 
+                        className="read-more"
+                        onClick={() => handleReadMore(item)}
+                      >
+                        Read More →
+                      </button>
+                    </div>
+                        </div>
+                      </article>
+                    </CardHover>
+                  </StaggerItem>
+                ))}
               </div>
-              <div className="news-modal-footer">
-                <button className="btn btn-primary" onClick={handleCloseModal}>
-                  Close
-                </button>
+            </StaggerContainer>
+          ) : (
+            <div className="no-news">
+              <h3>No News Available</h3>
+              <p>Check back later for updates and announcements from Sahas Uyana.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="newsletter-section section">
+        <div className="container">
+          <div className="newsletter-content">
+            <FadeInUp>
+              <h2 className="newsletter-title">Stay Updated</h2>
+            </FadeInUp>
+            <FadeInUp delay={0.2}>
+              <p className="newsletter-description">
+                Subscribe to our newsletter to receive the latest news, event announcements, 
+                and special offers directly to your inbox.
+              </p>
+            </FadeInUp>
+            <FadeInUp delay={0.4}>
+              <form className="newsletter-form">
+                <div className="form-group">
+                  <input 
+                    type="email" 
+                    placeholder="Enter your email address" 
+                    className="newsletter-input"
+                    required 
+                  />
+                  <button type="submit" className="btn btn-primary newsletter-btn">
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </FadeInUp>
+          </div>
+        </div>
+      </section>
+
+      {/* News Modal */}
+      {showNewsModal && selectedNews && (
+        <div className="news-modal-overlay" onClick={handleCloseModal}>
+          <div className="news-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="news-modal-header">
+              <div className="news-modal-category">{selectedNews.category}</div>
+              <button className="news-modal-close" onClick={handleCloseModal}>
+                ×
+              </button>
+            </div>
+            <div className="news-modal-body">
+              <div className="news-modal-image">
+                {selectedNews.imageUrl ? (
+                  <img 
+                    src={selectedNews.imageUrl} 
+                    alt={selectedNews.title}
+                    className="news-modal-img"
+                  />
+                ) : (
+                  <div className={`news-placeholder ${selectedNews.image}`}>
+                    {selectedNews.title}
+                  </div>
+                )}
+              </div>
+              <h2 className="news-modal-title">{selectedNews.title}</h2>
+              <div className="news-modal-date">{formatDate(selectedNews.date)}</div>
+              <div className="news-modal-description">
+                <p>{selectedNews.description}</p>
+              </div>
+              <div className="news-modal-content-text">
+                {selectedNews.content && selectedNews.content.split('\n').map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
               </div>
             </div>
+            <div className="news-modal-footer">
+              <button className="btn btn-primary" onClick={handleCloseModal}>
+                Close
+              </button>
+            </div>
           </div>
-        )}
-      </div>
-    </PageTransition>
-  );
+        </div>
+      )}
+    </div>
+  </PageTransition>
+);
 };
 
 export default News;
