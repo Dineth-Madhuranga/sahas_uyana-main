@@ -1,5 +1,7 @@
 .directors-office {
   min-height: 100vh;
+  /* Add margin-top to account for fixed header like in Venues page */
+  margin-top: 100px;
 }
 
 /* Hero Section */
@@ -16,6 +18,21 @@
   text-align: center;
   position: relative;
   padding-bottom: 2rem;
+}
+
+.directors-office .container {
+  max-width: 1400px;
+  padding: 0 1rem;
+}
+
+.speech-section .container {
+  max-width: 1400px;
+  padding: 0 1rem;
+}
+
+.contact-directors .container {
+  max-width: 1400px;
+  padding: 0 1rem;
 }
 
 .directors-title {

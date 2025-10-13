@@ -1,5 +1,7 @@
 .our-story {
   min-height: 100vh;
+  /* Add margin-top to account for fixed header like in Venues page */
+  margin-top: 100px;
 }
 
 /* Hero Section */
@@ -38,6 +40,11 @@
 /* Timeline Section */
 .timeline-section {
   background: white;
+}
+
+.timeline-section .container {
+  max-width: 1400px;
+  padding: 0 1rem;
 }
 
 .timeline {

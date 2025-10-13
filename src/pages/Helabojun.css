@@ -1,5 +1,7 @@
 .helabojun {
   min-height: 100vh;
+  /* Add margin-top to account for fixed header like in Venues page */
+  margin-top: 100px;
 }
 
 /* Hero Section */
@@ -16,6 +18,31 @@
   text-align: center;
   position: relative;
   padding-bottom: 2rem;
+}
+
+.helabojun .container {
+  max-width: 1400px;
+  padding: 0 1rem;
+}
+
+.menu-section .container {
+  max-width: 1400px;
+  padding: 0 1rem;
+}
+
+.ingredients-section .container {
+  max-width: 1400px;
+  padding: 0 1rem;
+}
+
+.visit-section .container {
+  max-width: 1400px;
+  padding: 0 1rem;
+}
+
+.health-section .container {
+  max-width: 1400px;
+  padding: 0 1rem;
 }
 
 .helabojun-title {
