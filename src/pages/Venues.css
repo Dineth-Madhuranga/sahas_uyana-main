@@ -7,7 +7,7 @@
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('https://i.postimg.cc/XJJTMB0J/Whats-App-Image-2025-09-04-at-10-30-02-5ac32ab6.jpg') center/cover;
   background-attachment: fixed;
-  height: 100vh;
+  height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
