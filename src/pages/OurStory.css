@@ -382,11 +382,11 @@
     margin-top: 100px;
   }
 
-  .story-title {
+  .hero-content h1 {
     font-size: 2.5rem;
   }
 
-  .story-subtitle {
+  .hero-content p {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
@@ -451,11 +451,11 @@
     height: 60vh;
   }
 
-  .story-title {
+  .hero-content h1 {
     font-size: 2rem;
   }
 
-  .story-subtitle {
+  .hero-content p {
     font-size: 1rem;
     padding: 0 0.5rem;
   }

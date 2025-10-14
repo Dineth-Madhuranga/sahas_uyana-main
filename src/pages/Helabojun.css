@@ -412,11 +412,11 @@
     margin-top: 100px;
   }
 
-  .helabojun-title {
+  .hero-content h1 {
     font-size: 2.5rem;
   }
 
-  .helabojun-subtitle {
+  .hero-content p {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
@@ -475,11 +475,11 @@
     height: 60vh;
   }
 
-  .helabojun-title {
+  .hero-content h1 {
     font-size: 2rem;
   }
 
-  .helabojun-subtitle {
+  .hero-content p {
     font-size: 1rem;
     padding: 0 0.5rem;
   }

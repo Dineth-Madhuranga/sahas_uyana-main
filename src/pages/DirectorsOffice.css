@@ -444,11 +444,11 @@
     margin-top: 100px;
   }
 
-  .directors-title {
+  .hero-content h1 {
     font-size: 2.5rem;
   }
 
-  .directors-subtitle {
+  .hero-content p {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
@@ -504,11 +504,11 @@
     height: 60vh;
   }
 
-  .directors-title {
+  .hero-content h1 {
     font-size: 2rem;
   }
 
-  .directors-subtitle {
+  .hero-content p {
     font-size: 1rem;
     padding: 0 0.5rem;
   }
