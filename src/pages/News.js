@@ -113,7 +113,7 @@ const News = () => {
 
   if (loading) {
     return (
-      <div>
+      <div className="news">
         <div className="news-hero">
           <div className="container">
             <h1 className="news-title">News & Updates</h1>
