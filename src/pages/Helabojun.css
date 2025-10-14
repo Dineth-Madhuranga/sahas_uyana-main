@@ -6,19 +6,28 @@
 
 /* Hero Section */
 .helabojun-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/bvW3TtSS/imgi-14-fb86662148be855d931b37d6c1e5fcbe.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('https://i.postimg.cc/bvW3TtSS/imgi-14-fb86662148be855d931b37d6c1e5fcbe.jpg') center/cover;
   background-attachment: fixed;
   height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
+  color: white;
   padding-bottom: 2rem;
   margin-top: -60px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 0;
 }
 
 .helabojun-title {
