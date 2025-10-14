@@ -12,6 +12,7 @@
   min-height: 80px;
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
 }
 
 /* Safety: ensure any overlay element is hidden completely */
@@ -22,6 +23,7 @@
 .header .container {
   position: relative;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 .header-content {
@@ -31,7 +33,7 @@
   padding: 1.5rem 2rem;
   position: relative;
   min-height: 80px;
-  z-index: 2000; /* Ensure nav sits above overlay */
+  z-index: 2000;
 }
 
 .logo {
@@ -164,9 +166,11 @@
 .mobile-menu-toggle.open span:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
+
 .mobile-menu-toggle.open span:nth-child(2) {
   opacity: 0;
 }
+
 .mobile-menu-toggle.open span:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
 }
@@ -176,12 +180,12 @@
   .mobile-menu-toggle {
     display: flex !important;
   }
-  
+
   .nav-left,
   .nav-right {
     display: none;
   }
-  
+
   .nav-open {
     display: block !important;
   }
@@ -190,17 +194,21 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
   .header {
-    width: 95%;
+    width: calc(100% - 20px);
+    /* Use calc instead of percentage */
+    max-width: calc(100vw - 20px);
+    /* Prevent overflow */
     left: 50%;
     top: 10px;
     transform: translateX(-50%);
     border-radius: 12px;
     min-height: 48px;
-    /* Remove any dim/blur effect on mobile */
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.95) !important;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.12);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    /* Important fix */
   }
 
   .header-content {
@@ -209,12 +217,18 @@
     padding: 0.5rem 0.75rem;
     min-height: 48px;
     justify-content: space-between;
+    box-sizing: border-box;
+    /* Important fix */
   }
 
-  /* Restore container padding for floating header */
   .header .container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    /* Reduced padding */
+    padding-right: 10px;
+    box-sizing: border-box;
+    /* Important fix */
+    max-width: 100%;
+    margin: 0;
   }
 
   .logo {
@@ -224,7 +238,6 @@
     flex: 0 0 auto;
   }
 
-  /* Smaller logo on mobile */
   .logo-image {
     height: 46px;
   }
@@ -240,12 +253,11 @@
     min-height: 36px;
   }
 
-  /* Single combined mobile menu container */
   .nav-mobile {
     position: static;
     order: 3;
     width: 100%;
-    display: none; /* hidden until opened */
+    display: none;
     z-index: 2005;
   }
 
@@ -281,7 +293,6 @@
     pointer-events: auto;
   }
 
-  /* Unify menus: make left and right lists look like one continuous list */
   .nav-left .nav-list,
   .nav-right .nav-list {
     background: transparent;
@@ -290,30 +301,26 @@
     padding: 0;
     margin-top: 0;
   }
-  /* Mobile single list box styling */
+
   .nav-mobile .nav-list {
     background: #fff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 1rem;
     margin-top: 1rem;
   }
-  /* Remove extra spacing between the two blocks */
+
   .nav-left,
   .nav-right {
     margin: 0;
   }
-  /* Add subtle separators between items across both lists */
-  .nav-item {
-    border-bottom: 1px solid #eee;
-  }
-  /* Remove border from the very last item (in right list last-child) */
-  .nav-right .nav-item:last-child {
-    border-bottom: none;
-  }
 
   .nav-item {
     border-bottom: 1px solid #eee;
+  }
+
+  .nav-right .nav-item:last-child {
+    border-bottom: none;
   }
 
   .nav-item:last-child {
@@ -337,16 +344,18 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 900; /* below header and menus */
-    pointer-events: none; /* purely visual, never blocks clicks */
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 900;
+    pointer-events: none;
   }
 }
 
 @media (max-width: 480px) {
   .header {
     min-height: 46px;
-    width: 96%;
+    width: calc(100% - 16px);
+    /* Adjusted for smaller screens */
+    max-width: calc(100vw - 16px);
     top: 8px;
     border-radius: 10px;
   }
