@@ -115,9 +115,9 @@ const News = () => {
     return (
       <div className="news">
         <div className="news-hero">
-          <div className="container">
-            <h1 className="news-title">News & Updates</h1>
-            <p className="news-subtitle">
+          <div className="hero-content">
+            <h1>News & Updates</h1>
+            <p>
               Stay informed about the latest events, exhibitions, and happenings at Sahas Uyana.
             </p>
           </div>
