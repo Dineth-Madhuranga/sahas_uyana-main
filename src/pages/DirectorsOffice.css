@@ -6,28 +6,19 @@
 
 /* Hero Section */
 .directors-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://i.postimg.cc/DwcGd2gb/IMG-20250904-WA0033.jpg') center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/DwcGd2gb/IMG-20250904-WA0033.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
+  position: relative;
   padding-bottom: 2rem;
   margin-top: -60px;
-}
-
-.hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 0;
 }
 
 .directors-title {
@@ -444,11 +435,11 @@
     margin-top: 100px;
   }
 
-  .hero-content h1 {
+  .directors-title {
     font-size: 2.5rem;
   }
 
-  .hero-content p {
+  .directors-subtitle {
     font-size: 1.1rem;
     padding: 0 1rem;
   }
@@ -504,11 +495,11 @@
     height: 60vh;
   }
 
-  .hero-content h1 {
+  .directors-title {
     font-size: 2rem;
   }
 
-  .hero-content p {
+  .directors-subtitle {
     font-size: 1rem;
     padding: 0 0.5rem;
   }

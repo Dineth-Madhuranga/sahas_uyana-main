@@ -1,42 +1,31 @@
-/* Key fixes for mobile viewport issues */
 .home {
   min-height: 100vh;
   position: relative;
   padding-top: 120px;
-  box-sizing: border-box;
 }
 
 @keyframes gradientShift {
-
-  0%,
-  100% {
+  0%, 100% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
 }
 
 @keyframes backgroundFloat {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1) translateY(0px);
   }
-
   50% {
     transform: scale(1.05) translateY(-10px);
   }
 }
 
 @keyframes overlayPulse {
-
-  0%,
-  100% {
+  0%, 100% {
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(25, 118, 210, 0.3));
   }
-
   50% {
     background: linear-gradient(45deg, rgba(25, 118, 210, 0.3), rgba(0, 0, 0, 0.6));
   }
@@ -100,11 +89,11 @@
   color: #FFD700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  text-shadow: 3px 3px 0px #000,
-    -1px -1px 0px #000,
-    1px -1px 0px #000,
-    -1px 1px 0px #000,
-    1px 1px 0px #000;
+  text-shadow: 3px 3px 0px #000, 
+               -1px -1px 0px #000,  
+               1px -1px 0px #000,
+               -1px 1px 0px #000,
+               1px 1px 0px #000;
   font-family: '0KDROSE Regular', 'Impact', 'Arial Black', 'Helvetica', sans-serif;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -158,13 +147,10 @@
 }
 
 @keyframes heroImageFloat {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px) scale(1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
-
   50% {
     transform: translateY(-15px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -175,39 +161,30 @@
   0% {
     background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
   }
-
   25% {
     background: linear-gradient(225deg, #4CAF50 0%, #2E7D32 100%);
   }
-
   50% {
     background: linear-gradient(315deg, #4CAF50 0%, #2E7D32 100%);
   }
-
   75% {
     background: linear-gradient(45deg, #4CAF50 0%, #2E7D32 100%);
   }
-
   100% {
     background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
   }
 }
 
 @keyframes patternMove {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateX(0px) translateY(0px);
   }
-
   25% {
     transform: translateX(10px) translateY(-5px);
   }
-
   50% {
     transform: translateX(-5px) translateY(-10px);
   }
-
   75% {
     transform: translateX(-10px) translateY(5px);
   }
@@ -520,7 +497,7 @@
   .hero-title img {
     height: 80px !important;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 70px !important;
   }
@@ -530,7 +507,7 @@
   .hero-title img {
     height: 70px !important;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 60px !important;
   }
@@ -540,7 +517,7 @@
   .hero-title img {
     height: 60px !important;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 50px !important;
   }
@@ -550,7 +527,7 @@
   .hero-title img {
     height: 55px !important;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 48px !important;
   }
@@ -561,11 +538,11 @@
     height: 50px !important;
     margin-right: 25px !important;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 42px !important;
   }
-
+  
   .venues-preview .container {
     padding: 0 1.5rem;
   }
@@ -576,43 +553,42 @@
     height: 45px !important;
     margin-right: 20px !important;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 38px !important;
   }
-
+  
   .venues-preview .container {
     padding: 0 1.5rem;
   }
 }
 
-/* FIXED: Changed margin-top to padding-top to prevent layout shift */
 @media (max-width: 992px) and (min-width: 820px) {
   .home {
-    padding-top: 150px;
+    margin-top: 150px;
   }
 
   .hero-title img {
     height: 58px !important;
     margin-right: 22px !important;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 50px !important;
   }
-
+  
   .hero-subtitle {
     font-size: 1.2rem;
     max-width: 620px;
     line-height: 1.55;
     margin-bottom: 2rem;
   }
-
+  
   .hero-btn {
     padding: 1rem 2.2rem;
     font-size: 1.1rem;
   }
-
+  
   .hero-content {
     padding: 3rem 1.5rem;
   }
@@ -620,24 +596,24 @@
 
 @media (max-width: 819px) and (min-width: 769px) {
   .home {
-    padding-top: 115px;
+    margin-top: 115px;
   }
 
   .hero-title img {
     height: 60px !important;
     margin-right: 22px !important;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 50px !important;
   }
-
+  
   .hero-subtitle {
     font-size: 1.2rem;
     max-width: 600px;
     line-height: 1.6;
   }
-
+  
   .hero-btn {
     padding: 1rem 2.2rem;
     font-size: 1.1rem;
@@ -646,8 +622,7 @@
 
 @media (max-width: 768px) {
   .home {
-    padding-top: 60px;
-    /* FIXED: Reduced to match header height */
+    margin-top: 110px;
   }
 
   .hero {
@@ -678,12 +653,12 @@
     margin-bottom: 1.2rem;
     padding: 0 0.5rem;
   }
-
+  
   .hero-title img {
     height: 60px !important;
     flex-shrink: 0;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 50px !important;
   }
@@ -691,7 +666,7 @@
   .hero-subtitle {
     display: none;
   }
-
+  
   .hero-btn {
     padding: 1rem 2rem;
     font-size: 1.1rem;
@@ -710,11 +685,11 @@
   .hero-placeholder {
     margin: 0.5rem;
   }
-
+  
   .venues-preview .container {
     padding: 0 1rem;
   }
-
+  
   .venues-preview .grid {
     gap: 1rem;
   }
@@ -727,7 +702,7 @@
   .ev-icon {
     font-size: 4rem;
   }
-
+  
   .parking-content {
     flex-direction: column;
     text-align: center;
@@ -749,8 +724,7 @@
 
 @media (max-width: 576px) {
   .home {
-    padding-top: 60px;
-    /* FIXED: Keep consistent */
+    margin-top: 100px;
   }
 
   .hero {
@@ -777,12 +751,12 @@
     padding: 0 0.5rem;
     margin-bottom: 1rem;
   }
-
+  
   .hero-title img {
     height: 50px !important;
     flex-shrink: 0;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 42px !important;
   }
@@ -812,8 +786,7 @@
 
 @media (max-width: 480px) {
   .home {
-    padding-top: 56px;
-    /* FIXED: Match header height */
+    margin-top: 90px;
   }
 
   .hero {
@@ -840,12 +813,12 @@
     padding: 0 0.3rem;
     margin-bottom: 0.8rem;
   }
-
+  
   .hero-title img {
     height: 45px !important;
     flex-shrink: 0;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 38px !important;
   }
@@ -884,8 +857,7 @@
 /* Extra small devices (phones in portrait, less than 375px) */
 @media (max-width: 374px) {
   .home {
-    padding-top: 56px;
-    /* FIXED: Keep consistent with 480px */
+    margin-top: 50px;
   }
 
   .hero-content {
@@ -908,12 +880,12 @@
     padding: 0 0.2rem;
     margin-bottom: 0.6rem;
   }
-
+  
   .hero-title img {
     height: 40px !important;
     flex-shrink: 0;
   }
-
+  
   .hero-title img:nth-child(3) {
     height: 35px !important;
   }
