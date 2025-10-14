@@ -398,7 +398,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .helabojun {
-    margin-top: 100px;
+    margin-top: 0;
   }
 
   .helabojun-title {

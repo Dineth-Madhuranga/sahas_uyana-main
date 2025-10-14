@@ -375,7 +375,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact {
-    margin-top: 100px;
+    margin-top: 0;
   }
 
   .contact-title {
