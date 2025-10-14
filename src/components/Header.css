@@ -24,6 +24,10 @@
   position: relative;
   z-index: 1000;
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .header-content {
@@ -34,6 +38,8 @@
   position: relative;
   min-height: 80px;
   z-index: 2000;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .logo {
@@ -194,40 +200,40 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
   .header {
-    width: calc(100% - 20px);
-    /* Use calc instead of percentage */
-    max-width: calc(100vw - 20px);
-    /* Prevent overflow */
-    left: 50%;
-    top: 10px;
-    transform: translateX(-50%);
-    border-radius: 12px;
-    min-height: 48px;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: none;
+    border-radius: 0;
+    min-height: 60px;
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.95) !important;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    /* Important fix */
+    padding: 0;
+    margin: 0;
   }
 
   .header-content {
     flex-wrap: wrap;
     position: relative;
-    padding: 0.5rem 0.75rem;
-    min-height: 48px;
+    padding: 0.75rem 1rem;
+    min-height: 60px;
     justify-content: space-between;
     box-sizing: border-box;
-    /* Important fix */
+    width: 100%;
+    max-width: 100%;
   }
 
   .header .container {
-    padding-left: 10px;
-    /* Reduced padding */
-    padding-right: 10px;
+    padding: 0;
     box-sizing: border-box;
-    /* Important fix */
     max-width: 100%;
+    width: 100%;
     margin: 0;
   }
 
@@ -352,17 +358,12 @@
 
 @media (max-width: 480px) {
   .header {
-    min-height: 46px;
-    width: calc(100% - 16px);
-    /* Adjusted for smaller screens */
-    max-width: calc(100vw - 16px);
-    top: 8px;
-    border-radius: 10px;
+    min-height: 56px;
   }
 
   .header-content {
-    padding: 0.5rem 0.7rem;
-    min-height: 46px;
+    padding: 0.65rem 0.85rem;
+    min-height: 56px;
   }
 
   .logo-image {

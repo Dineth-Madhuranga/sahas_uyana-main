@@ -4,12 +4,6 @@
   position: relative;
   padding-top: 120px;
   box-sizing: border-box;
-  /* Added */
-}
-
-/* Add this at the top level to fix all viewport issues */
-* {
-  box-sizing: border-box;
 }
 
 @keyframes gradientShift {
@@ -596,7 +590,6 @@
 @media (max-width: 992px) and (min-width: 820px) {
   .home {
     padding-top: 150px;
-    /* Changed from margin-top */
   }
 
   .hero-title img {
@@ -628,7 +621,6 @@
 @media (max-width: 819px) and (min-width: 769px) {
   .home {
     padding-top: 115px;
-    /* Changed from margin-top */
   }
 
   .hero-title img {
@@ -654,8 +646,8 @@
 
 @media (max-width: 768px) {
   .home {
-    padding-top: 80px;
-    /* Changed from margin-top and reduced value */
+    padding-top: 60px;
+    /* FIXED: Reduced to match header height */
   }
 
   .hero {
@@ -757,8 +749,8 @@
 
 @media (max-width: 576px) {
   .home {
-    padding-top: 70px;
-    /* Changed from margin-top and reduced */
+    padding-top: 60px;
+    /* FIXED: Keep consistent */
   }
 
   .hero {
@@ -820,8 +812,8 @@
 
 @media (max-width: 480px) {
   .home {
-    padding-top: 65px;
-    /* Changed from margin-top and reduced */
+    padding-top: 56px;
+    /* FIXED: Match header height */
   }
 
   .hero {
@@ -892,8 +884,8 @@
 /* Extra small devices (phones in portrait, less than 375px) */
 @media (max-width: 374px) {
   .home {
-    padding-top: 60px;
-    /* Changed from margin-top and reduced */
+    padding-top: 56px;
+    /* FIXED: Keep consistent with 480px */
   }
 
   .hero-content {
