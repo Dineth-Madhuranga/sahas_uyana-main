@@ -18,13 +18,14 @@
   text-align: center;
   position: relative;
   padding-bottom: 2rem;
-  margin-top: -60px;
+  margin-top: -100px;
 }
 
 .story-title {
   font-size: 3rem;
   font-weight: 700;
   color: white;
+  margin-top: 3rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
