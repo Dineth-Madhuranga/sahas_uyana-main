@@ -216,6 +216,7 @@
     padding: 0;
     margin: 0;
     position: fixed;
+    z-index: 1000;
   }
 
   .header-content {
@@ -264,7 +265,7 @@
     order: 3;
     width: 100%;
     display: none;
-    z-index: 2005;
+    z-index: 1005;
   }
 
   .nav-mobile.nav-open {
@@ -297,6 +298,7 @@
     position: relative;
     z-index: 10030;
     pointer-events: auto;
+    transform: translateZ(0);
   }
 
   .nav-left .nav-list,
@@ -314,6 +316,7 @@
     border-radius: 8px;
     padding: 1rem;
     margin-top: 0.5rem;
+    transform: translateZ(0);
   }
 
   .nav-left,
@@ -351,8 +354,13 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.3);
-    z-index: 900;
+    z-index: 950;
     pointer-events: none;
+  }
+
+  .header-content {
+    z-index: 1001;
+    position: relative;
   }
 }
 
