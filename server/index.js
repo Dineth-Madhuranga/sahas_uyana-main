@@ -23,7 +23,7 @@ const corsOptions = {
       'http://localhost:3000',
       'http://localhost:3001',
       process.env.FRONTEND_URL,
-      'https://sahas-uyana.vercel.app',
+      'https://client-delta-vert.vercel.app/',
       'https://sahas-uyana-git-main-dilsha-weerasinghes-projects.vercel.app',
       'https://sahasuyana-main-production-05fe.up.railway.app'
     ].filter(Boolean); // Remove undefined values
